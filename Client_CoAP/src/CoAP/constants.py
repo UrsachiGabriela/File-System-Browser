@@ -12,8 +12,8 @@ class Type(Enum):
     RST = 3
 
 class Method(Enum):
-    EMPTY = 0.00
-    GET = 0.01
-    POST = 0.02
-    SEARCH = 0.08
+    EMPTY = 0
+    GET = 1
+    POST = 2
+    SEARCH = 8
 
