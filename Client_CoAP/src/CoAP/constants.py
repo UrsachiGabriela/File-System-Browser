@@ -17,3 +17,8 @@ class Method(Enum):
     POST = 2
     SEARCH = 8
 
+class Class(Enum):
+    METHOD = 0
+    SUCCESS = 1
+    CLIENT_ERROR = 4
+    SERVER_ERROR = 5
