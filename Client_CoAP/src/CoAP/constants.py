@@ -11,7 +11,7 @@ class Type(Enum):
     ACK = 2
     RST = 3
 
-class Method(Enum):
+class Code(Enum):
     EMPTY = 0
     GET = 1
     POST = 2

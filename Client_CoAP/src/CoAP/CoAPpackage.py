@@ -11,7 +11,7 @@ class Message:
         self.payload=payload
 
     @classmethod
-    def extractFromBytes(cls,data:bytes):
+    def decode(cls,data:bytes): #extractFromBytes
         version=(0xC0 & data[0])>>6
         m_type=(0x30 & data[0])>>4
         token_len=(0x0F & data[0])>>0
@@ -28,6 +28,7 @@ class Message:
 
         #un octet este pastrat pt payload marker = 0xFF
         payload=data[5+token_len:].decode('utf-8')
+        token=0
         if(token_len):
             token=data[4:4+token_len]
 
@@ -35,10 +36,13 @@ class Message:
 
 
 
-    def toBytes(self):
+    def encode(self): #toBytes
         data=0x00
-        data=data|self.version<<6
-        #....
+        # 1st byte
+        data=data | (self.version<<6)
+        data=data | (self.m_type << 4)
+        data |= self.token_len
+
 
 
         return bytes(data)
