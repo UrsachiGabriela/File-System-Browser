@@ -1,5 +1,5 @@
 import abc
-
+import constants
 
 class Command(metaclass=abc.ABCMeta):
 
@@ -30,7 +30,7 @@ class lsCommand(Command):
 
     @staticmethod
     def getCode():
-        return 1
+        return constants.Method.GET
 
     @staticmethod
     def responseNeeded():
@@ -50,7 +50,7 @@ class createDirCommand(Command):
 
     @staticmethod
     def getCode():
-        return 2
+        return constants.Method.POST
 
     @staticmethod
     def responseNeeded():
@@ -69,7 +69,7 @@ class createFileCommand(Command):
 
     @staticmethod
     def getCode():
-        return 2
+        return constants.Method.POST
 
     @staticmethod
     def responseNeeded():
@@ -85,7 +85,7 @@ class openCommand(Command):
 
     @staticmethod
     def getCode():
-        return 2
+        return constants.Method.POST
 
     @staticmethod
     def responseNeeded():
@@ -104,7 +104,7 @@ class saveCommand(Command):
 
     @staticmethod
     def getCode():
-        return 2
+        return constants.Method.POST
 
     @staticmethod
     def responseNeeded():
@@ -120,7 +120,7 @@ class DeleteCommand(Command):
 
     @staticmethod
     def getCode():
-        return 2
+        return constants.Method.POST
 
     @staticmethod
     def responseNeeded():
@@ -138,7 +138,7 @@ class renameCommand(Command):
 
     @staticmethod
     def getCode():
-        return 2
+        return constants.Method.POST
 
     @staticmethod
     def responseNeeded():
@@ -155,7 +155,7 @@ class moveCommand(Command):
 
     @staticmethod
     def getCode():
-        return 2
+        return constants.Method.POST
 
     @staticmethod
     def responseNeeded():
@@ -172,7 +172,7 @@ class cdCommand(Command):
 
     @staticmethod
     def getCode():
-        return 2
+        return constants.Method.POST
 
     @staticmethod
     def responseNeeded():
@@ -186,7 +186,7 @@ class dirBackCommand(Command):
 
     @staticmethod
     def getCode():
-        return 2
+        return constants.Method.POST
 
     @staticmethod
     def responseNeeded():
@@ -202,9 +202,8 @@ class searchCommand(Command):
 
     @staticmethod
     def getCode():
-        return 8
+        return constants.Method.SEARCH
 
     @staticmethod
     def responseNeeded():
         return True
-

@@ -1,5 +1,6 @@
-
+from src.GUI.interface import Window
 
 if __name__=='__main__':
-    print("Client CoAP")
+    app= Window()
+    app.window.mainloop()
 
