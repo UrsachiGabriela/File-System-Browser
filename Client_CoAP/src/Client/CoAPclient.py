@@ -8,7 +8,7 @@ class CoAPclient():
         self.mySocket=socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 
     def startConnection(self):
-        self.mySocket.bind((serverIp, int(myPort))
+        self.mySocket.bind( self.serverIp, int(self.myPort))
         print('Connection started. :) ')
 
     def endConnection(self):
