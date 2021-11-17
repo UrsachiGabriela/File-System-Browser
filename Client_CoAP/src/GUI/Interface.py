@@ -7,5 +7,3 @@ class Window():
         self.window.wm_title('Browser FS CoAP')
         self.fFrame = Frame(self.window, height=960, width=1024)
 
-app= Window()
-app.window.mainloop()
