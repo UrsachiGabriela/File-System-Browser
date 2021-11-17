@@ -5,5 +5,6 @@ class Window():
     def __init__(self):
         self.window = Tk()
         self.window.wm_title('Browser FS CoAP')
-        self.fFrame = Frame(self.window, height=960, width=1024)
-
+        #self.fFrame = Frame(self.window, height=960, width=1024)
+        self.window.geometry('960x960')
+        
