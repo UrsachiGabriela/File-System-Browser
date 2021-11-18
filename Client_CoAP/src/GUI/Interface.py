@@ -13,7 +13,7 @@ name= tk.StringVar()
 def create_dir_clicked():
     """ callback when the create_dir button is clicked
     """
-    msg = f'Se creeaza directorul!'
+    msg = f'Se creeaza directorul {name.get()}!'
     showinfo(
         title='Information',
         message=msg
@@ -21,7 +21,7 @@ def create_dir_clicked():
 def create_file_clicked():
     """ callback when the create_file button is clicked
     """
-    msg = f'Se creeaza fisierul!'
+    msg = f'Se creeaza fisierul {name.get()}!'
     showinfo(
         title='Information',
         message=msg
@@ -29,7 +29,7 @@ def create_file_clicked():
 def open_clicked():
     """ callback when the open button is clicked
     """
-    msg = f'Se deschide fisierul!'
+    msg = f'Se deschide fisierul {name.get()}!'
     showinfo(
         title='Information',
         message=msg
@@ -37,7 +37,7 @@ def open_clicked():
 def save_clicked():
     """ callback when the save button is clicked
     """
-    msg = f'Se salveaza continutul fisierului!'
+    msg = f'Se salveaza continutul fisierului {name.get()}!'
     showinfo(
         title='Information',
         message=msg
@@ -46,7 +46,7 @@ def save_clicked():
 def delete_clicked():
     """ callback when the delete button is clicked
     """
-    msg = f'Se realizeaza stergerea!'
+    msg = f'Se realizeaza stergerea fisierului/directorului {name.get()}!'
     showinfo(
         title='Information',
         message=msg
@@ -54,7 +54,7 @@ def delete_clicked():
 def rename_clicked():
     """ callback when the rename button is clicked
     """
-    msg = f'Se realizeaza redenumirea!'
+    msg = f'Se realizeaza redenumirea fisierului/directorului {name.get()}!'
     showinfo(
         title='Information',
         message=msg
@@ -62,7 +62,7 @@ def rename_clicked():
 def move_clicked():
     """ callback when the move button is clicked
     """
-    msg = f'Se realizeaza mutarea!'
+    msg = f'Se realizeaza mutarea fisierului/directorului {name.get()}!'
     showinfo(
         title='Information',
         message=msg
@@ -71,7 +71,7 @@ def move_clicked():
 def cd_clicked():
     """ callback when the cd button is clicked
     """
-    msg = f'Se navigheaza spre directorul dat!'
+    msg = f'Se navigheaza spre directorul {name.get()}!'
     showinfo(
         title='Information',
         message=msg
@@ -79,7 +79,7 @@ def cd_clicked():
 def dir_back_clicked():
     """ callback when the dir_back button is clicked
     """
-    msg = f'Se navigheaza spre directorul anterior!'
+    msg = f'Se navigheaza spre directorul anterior lui {name.get()}!'
     showinfo(
         title='Information',
         message=msg
@@ -87,7 +87,7 @@ def dir_back_clicked():
 def search_clicked():
     """ callback when the search button is clicked
     """
-    msg = f'Se realizeaza cautarea!'
+    msg = f'Se realizeaza cautarea fisierului/directorului {name.get()}!'
     showinfo(
         title='Information',
         message=msg
