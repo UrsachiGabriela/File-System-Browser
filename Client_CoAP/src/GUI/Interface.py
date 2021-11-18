@@ -19,7 +19,7 @@ def create_dir_clicked():
         message=msg
     )
 def create_file_clicked():
-    """ callback when the create_dir button is clicked
+    """ callback when the create_file button is clicked
     """
     msg = f'Se creeaza fisierul!'
     showinfo(
@@ -27,7 +27,7 @@ def create_file_clicked():
         message=msg
     )
 def open_clicked():
-    """ callback when the create_dir button is clicked
+    """ callback when the open button is clicked
     """
     msg = f'Se deschide fisierul!'
     showinfo(
@@ -35,7 +35,7 @@ def open_clicked():
         message=msg
     )
 def save_clicked():
-    """ callback when the create_dir button is clicked
+    """ callback when the save button is clicked
     """
     msg = f'Se salveaza continutul fisierului!'
     showinfo(
@@ -44,7 +44,7 @@ def save_clicked():
     )
 
 def delete_clicked():
-    """ callback when the create_dir button is clicked
+    """ callback when the delete button is clicked
     """
     msg = f'Se realizeaza stergerea!'
     showinfo(
@@ -52,7 +52,7 @@ def delete_clicked():
         message=msg
     )
 def rename_clicked():
-    """ callback when the create_dir button is clicked
+    """ callback when the rename button is clicked
     """
     msg = f'Se realizeaza redenumirea!'
     showinfo(
@@ -60,7 +60,7 @@ def rename_clicked():
         message=msg
     )
 def move_clicked():
-    """ callback when the create_dir button is clicked
+    """ callback when the move button is clicked
     """
     msg = f'Se realizeaza mutarea!'
     showinfo(
@@ -69,7 +69,7 @@ def move_clicked():
     )
 
 def cd_clicked():
-    """ callback when the create_dir button is clicked
+    """ callback when the cd button is clicked
     """
     msg = f'Se navigheaza spre directorul dat!'
     showinfo(
@@ -77,7 +77,7 @@ def cd_clicked():
         message=msg
     )
 def dir_back_clicked():
-    """ callback when the create_dir button is clicked
+    """ callback when the dir_back button is clicked
     """
     msg = f'Se navigheaza spre directorul anterior!'
     showinfo(
@@ -85,7 +85,7 @@ def dir_back_clicked():
         message=msg
     )
 def search_clicked():
-    """ callback when the create_dir button is clicked
+    """ callback when the search button is clicked
     """
     msg = f'Se realizeaza cautarea!'
     showinfo(
