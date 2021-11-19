@@ -34,7 +34,7 @@ class Message:
 
         return cls(m_type,token_len,m_class,m_code,m_id,payload,version,token)
 
-
+        #struct module -- pack/unpack
 
     def encode(self): #toBytes
         data=[]
