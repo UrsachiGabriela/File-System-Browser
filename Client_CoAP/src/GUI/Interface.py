@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
 
+
 # root window
 root = tk.Tk()
 root.geometry("400x520")
@@ -94,7 +95,12 @@ def search_clicked():
     )
 # Browser frame
 browser = ttk.Frame(root)
-browser.pack(padx=10, pady=10, fill='x', expand=True)
+browser.pack(padx=20, pady=10, fill='x', expand=True)
+
+# Background
+pict= tk.PhotoImage(file='CoAp.png')
+picture= tk.Label(browser,image=pict)
+picture.place(x=-70,y=-10)
 
 # File/Directory Name
 name_label = ttk.Label(browser, text="File/Directory Name:")
