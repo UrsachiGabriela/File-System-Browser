@@ -11,14 +11,14 @@ root.title('Browser FS CoAP')
 
 name= tk.StringVar()
 
-def create_dir_clicked():
-    """ callback when the create_dir button is clicked
-    """
-    msg = f'Se creeaza directorul {name.get()}!'
-    showinfo(
-        title='Information',
-        message=msg
-    )
+#def create_dir_clicked():
+ #   """ callback when the create_dir button is clicked
+ #    """
+ #   msg = f'Se creeaza directorul {name.get()}!'
+ #   showinfo(
+ #       title='Information',
+ #       message=msg
+  #  )
 def create_file_clicked():
     """ callback when the create_file button is clicked
     """
@@ -69,14 +69,13 @@ def move_clicked():
         message=msg
     )
 
-def cd_clicked():
-    """ callback when the cd button is clicked
-    """
-    msg = f'Se navigheaza spre directorul {name.get()}!'
-    showinfo(
-        title='Information',
-        message=msg
-    )
+#def cd_clicked():
+ #   """ callback when the cd button is clicked
+ #   """
+ #   msg = f'Se navigheaza spre directorul {name.get()}!'
+ #   showinfo(
+ #     message=msg
+   # )
 def dir_back_clicked():
     """ callback when the dir_back button is clicked
     """
@@ -111,8 +110,8 @@ name_entry.pack(fill='x', expand=True)
 name_entry.focus()
 
 # create_dir button
-create_dir_button = ttk.Button(browser, text="Create_dir", command=create_dir_clicked)
-create_dir_button.pack(fill='x', expand=True, pady=10)
+#create_dir_button = ttk.Button(browser, text="Create_dir", command=create_dir_clicked)
+#create_dir_button.pack(fill='x', expand=True, pady=10)
 
 # create_file button
 create_file_button = ttk.Button(browser, text="Create_file", command=create_file_clicked)
@@ -139,8 +138,8 @@ move_button = ttk.Button(browser, text="Move", command=move_clicked)
 move_button.pack(fill='x', expand=True, pady=10)
 
 # cd button
-cd_button = ttk.Button(browser, text="Cd(Navigate)", command=cd_clicked)
-cd_button.pack(fill='x', expand=True, pady=10)
+#cd_button = ttk.Button(browser, text="Cd(Navigate)", command=cd_clicked)
+#cd_button.pack(fill='x', expand=True, pady=10)
 
 # dir_back button
 dir_back_button = ttk.Button(browser, text="Dir_back", command=dir_back_clicked)
