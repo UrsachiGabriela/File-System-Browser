@@ -1,13 +1,23 @@
 from enum import Enum
 
-DEFAULT_VERSION = 1
-ACK_TIMEOUT = 2
-ACK_RANDOM_FACTOR  = 1.5
-MAX_RETRANSMIT = 4
+
+
+# For a new Confirmable message, the initial timeout is set
+#  to a random duration (often not an integral number of seconds)
+#  between ACK_TIMEOUT and (ACK_TIMEOUT * ACK_RANDOM_FACTOR)
+#  and the retransmission counter is set to 0
+
+class Param(Enum):
+    DEFAULT_VERSION = 1
+    ACK_TIMEOUT = 2
+    ACK_RANDOM_FACTOR  = 1.5
+    MAX_RETRANSMIT = 4
+    RETRANSMISSION_COUNTER=0
+
 
 class Type(Enum):
     CON_MSG = 0
-    NON_MSG = 1
+    NON_CON_MSG = 1
     ACK = 2
     RST = 3
 

@@ -1,22 +1,22 @@
 import abc
 import json
 
-import constants
+from src.CoAP.constants import Type,Class,Code
 
 class Command(metaclass=abc.ABCMeta):
 
-    @abc.abstractmethod
     @staticmethod
+    @abc.abstractmethod
     def getClass():
         pass
 
-    @abc.abstractmethod
     @staticmethod
+    @abc.abstractmethod
     def getCode():
         pass
 
-    @abc.abstractmethod
     @staticmethod
+    @abc.abstractmethod
     def responseNeeded():
         pass
 
@@ -32,11 +32,11 @@ class detailsCommand(Command): #list files properties
 
     @staticmethod
     def getClass():
-        return constants.Class.METHOD
+        return Class.METHOD
 
     @staticmethod
     def getCode():
-        return constants.Code.GET
+        return Code.GET
 
     @staticmethod
     def responseNeeded():
@@ -80,15 +80,16 @@ class createCommand(Command):
 
     @staticmethod
     def getClass():
-        return constants.Class.METHOD
+        return Class.METHOD
 
     @staticmethod
     def getCode():
-        return constants.Code.POST
+        return Code.POST
 
     @staticmethod
     def responseNeeded():
         return False
+
 
     def payload(self):
         p={
@@ -106,11 +107,11 @@ class openCommand(Command): #response is the content of file
 
     @staticmethod
     def getClass():
-        return constants.Class.METHOD
+        return Class.METHOD
 
     @staticmethod
     def getCode():
-        return constants.Code.POST
+        return Code.POST
 
     @staticmethod
     def responseNeeded():
@@ -132,11 +133,11 @@ class saveCommand(Command):
 
     @staticmethod
     def getClass():
-        return constants.Class.METHOD
+        return Class.METHOD
 
     @staticmethod
     def getCode():
-        return constants.Code.POST
+        return Code.POST
 
     @staticmethod
     def responseNeeded():
@@ -158,11 +159,11 @@ class DeleteCommand(Command):
 
     @staticmethod
     def getClass():
-        return constants.Class.METHOD
+        return Class.METHOD
 
     @staticmethod
     def getCode():
-        return constants.Code.POST
+        return Code.POST
 
     @staticmethod
     def responseNeeded():
@@ -178,17 +179,17 @@ class DeleteCommand(Command):
 
 
 class renameCommand(Command):
-    def __init__(self,oldPathName:str,newPathName:str):
-        self.oldPathName=oldPathName
-        self.newPathName=newPathName
+    def __init__(self,path:str,name:str):
+        self.path=path
+        self.name=name
 
     @staticmethod
     def getClass():
-        return constants.Class.METHOD
+        return Class.METHOD
 
     @staticmethod
     def getCode():
-        return constants.Code.POST
+        return Code.POST
 
     @staticmethod
     def responseNeeded():
@@ -197,8 +198,8 @@ class renameCommand(Command):
     def payload(self):
         p={
             "cmd":"rename",
-            "oldPathName":self.oldPathName,
-            "newPathName":self.newPathName
+            "path":self.path,
+            "name":self.name
         }
 
         return json.dumps(p)
@@ -212,11 +213,11 @@ class moveCommand(Command):
 
     @staticmethod
     def getClass():
-        return constants.Class.METHOD
+        return Class.METHOD
 
     @staticmethod
     def getCode():
-        return constants.Code.POST
+        return Code.POST
 
     @staticmethod
     def responseNeeded():
@@ -254,11 +255,11 @@ class backCommand(Command):
 
     @staticmethod
     def getClass():
-        return constants.Class.METHOD
+        return Class.METHOD
 
     @staticmethod
     def getCode():
-        return constants.Code.POST
+        return Code.POST
 
     @staticmethod
     def responseNeeded():
@@ -275,16 +276,17 @@ class backCommand(Command):
 
 
 class searchCommand(Command):
-    def __init__(self,searchedPathName:str):
+    def __init__(self,searchedPathName:str,targetName:str):
         self.searchedPathName=searchedPathName
+        self.targetName=targetName
 
     @staticmethod
     def getClass():
-        return constants.Class.METHOD
+        return Class.METHOD
 
     @staticmethod
     def getCode():
-        return constants.Code.SEARCH
+        return Code.SEARCH
 
     @staticmethod
     def responseNeeded():
@@ -293,7 +295,9 @@ class searchCommand(Command):
     def payload(self):
         p={
             "cmd":"search",
-            "path":self.searchedPathName
+            "path":self.searchedPathName,
+            "target_name_regex":self.targetName
+
         }
 
         return json.dumps(p)

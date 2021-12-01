@@ -1,3 +1,5 @@
+from src.CoAP.constants import Type
+
 
 class Message:
     def __init__(self,m_type:int,token_len:int,m_class:int,m_code:int,m_id:int,payload:str,version=1,token=0):
@@ -11,7 +13,7 @@ class Message:
         self.payload=payload
 
     @classmethod
-    def decode(cls,data:bytes): #extractFromBytes
+    def decode(cls,data:bytes) -> 'Message': #extractFromBytes
         version=(0xC0 & data[0])>>6
         m_type=(0x30 & data[0])>>4
         token_len=(0x0F & data[0])>>0
@@ -56,7 +58,6 @@ class Message:
             for i in range (0,self.token_len):
                 data.append(aux[i].to_bytes(1,'big'))
 
-        # OPTIONS ???? ########
 
         #PAYLOAD MARKER
         data.append(0xff)
