@@ -14,21 +14,35 @@ class Param(Enum):
     MAX_RETRANSMIT = 4
     RETRANSMISSION_COUNTER=0
 
+TYPE_CON_MSG=0
+TYPE_NON_CON_MSG = 1
+TYPE_ACK = 2
+TYPE_RST = 3
 
-class Type(Enum):
-    CON_MSG = 0
-    NON_CON_MSG = 1
-    ACK = 2
-    RST = 3
+# class Type(Enum):
+#     CON_MSG = 0
+#     NON_CON_MSG = 1
+#     ACK = 2
+#     RST = 3
 
-class Code(Enum):
-    EMPTY = 0
-    GET = 1
-    POST = 2
-    SEARCH = 8
+CODE_EMPTY = 0
+CODE_GET = 1
+CODE_POST = 2
+CODE_SEARCH = 8
 
-class Class(Enum):
-    METHOD = 0
-    SUCCESS = 1
-    CLIENT_ERROR = 4
-    SERVER_ERROR = 5
+# class Code(Enum):
+#     EMPTY = 0
+#     GET = 1
+#     POST = 2
+#     SEARCH = 8
+
+CLASS_METHOD = 0
+CLASS_SUCCESS = 1
+CLASS_CLIENT_ERROR = 4
+CLASS_SERVER_ERROR = 5
+
+# class Class(Enum):
+#     METHOD = 0
+#     SUCCESS = 1
+#     CLIENT_ERROR = 4
+#     SERVER_ERROR = 5

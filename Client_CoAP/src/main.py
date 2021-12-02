@@ -1,17 +1,17 @@
 from src.Client.CoAPclient import CoAPclient
 from math import log,ceil
 import json
+
+from src.CoAP.CoAPpackage import Message
+
+
 if __name__=='__main__':
+
 
 
      client=CoAPclient(10001,10002,'127.0.0.1')
      client.startConnection()
+     client.run()
      #client.endConnection()
-
-
-
-
-
-
 
 

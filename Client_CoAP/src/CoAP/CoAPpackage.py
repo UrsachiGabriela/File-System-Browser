@@ -1,4 +1,4 @@
-from src.CoAP.constants import Type
+import numpy as np
 
 
 class Message:
@@ -38,7 +38,7 @@ class Message:
 
         #struct module -- pack/unpack
 
-    def encode(self): #toBytes
+    def toBytes(self): #toBytes
         data=[]
 
         data.append((0x03 & self.version)<<6)
@@ -52,11 +52,12 @@ class Message:
         data.append(self.m_id & 0xff)
 
         if(self.token_len > 0):
+
             aux=self.token.to_bytes(self.token_len,'big')
             aux=bytearray(aux)
 
             for i in range (0,self.token_len):
-                data.append(aux[i].to_bytes(1,'big'))
+                data.append(aux[i])
 
 
         #PAYLOAD MARKER
@@ -69,10 +70,29 @@ class Message:
         for i in range(0,len(self.payload)):
             data.append(self.payload[i])
 
-        return bytes(data)
+        a = np.array(data)
+        a.tobytes()
 
 
 
+        return bytes(a)
+
+
+
+
+    def __str__(self):
+        display = ""
+        display += "version:{} \n ".format(self.version)
+        display += "type:{} \n ".format(self.m_type)
+        display += "token_len:{} \n ".format(self.token_len)
+        display += "class:{} \n ".format(self.m_class)
+        display += "code: {} \n".format(self.m_code)
+        display += "message_id:{} \n".format(self.m_id)
+        display += "token: {} \n".format(self.token)
+        display += "payload: {} \n".format(self.payload.encode('utf-8'))
+
+
+        return display
 
 
 

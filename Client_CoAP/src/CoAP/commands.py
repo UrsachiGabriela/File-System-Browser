@@ -1,7 +1,8 @@
 import abc
 import json
 
-from src.CoAP.constants import Type,Class,Code
+from src.CoAP.constants import *
+
 
 class Command(metaclass=abc.ABCMeta):
 
@@ -32,11 +33,11 @@ class detailsCommand(Command): #list files properties
 
     @staticmethod
     def getClass():
-        return Class.METHOD
+        return CLASS_METHOD
 
     @staticmethod
     def getCode():
-        return Code.GET
+        return CODE_GET
 
     @staticmethod
     def responseNeeded():
@@ -80,11 +81,11 @@ class createCommand(Command):
 
     @staticmethod
     def getClass():
-        return Class.METHOD
+        return CLASS_METHOD
 
     @staticmethod
     def getCode():
-        return Code.POST
+        return CODE_POST
 
     @staticmethod
     def responseNeeded():
@@ -107,11 +108,11 @@ class openCommand(Command): #response is the content of file
 
     @staticmethod
     def getClass():
-        return Class.METHOD
+        return CLASS_METHOD
 
     @staticmethod
     def getCode():
-        return Code.POST
+        return CODE_POST
 
     @staticmethod
     def responseNeeded():
@@ -133,11 +134,11 @@ class saveCommand(Command):
 
     @staticmethod
     def getClass():
-        return Class.METHOD
+        return CLASS_METHOD
 
     @staticmethod
     def getCode():
-        return Code.POST
+        return CODE_POST
 
     @staticmethod
     def responseNeeded():
@@ -153,17 +154,17 @@ class saveCommand(Command):
         return json.dumps(p)
 
 
-class DeleteCommand(Command):
+class deleteCommand(Command):
     def __init__(self,deletedPathName:str):
         self.deletedPathName=deletedPathName
 
     @staticmethod
     def getClass():
-        return Class.METHOD
+        return CLASS_METHOD
 
     @staticmethod
     def getCode():
-        return Code.POST
+        return CODE_POST
 
     @staticmethod
     def responseNeeded():
@@ -185,11 +186,11 @@ class renameCommand(Command):
 
     @staticmethod
     def getClass():
-        return Class.METHOD
+        return CLASS_METHOD
 
     @staticmethod
     def getCode():
-        return Code.POST
+        return CODE_POST
 
     @staticmethod
     def responseNeeded():
@@ -213,11 +214,11 @@ class moveCommand(Command):
 
     @staticmethod
     def getClass():
-        return Class.METHOD
+        return CLASS_METHOD
 
     @staticmethod
     def getCode():
-        return Code.POST
+        return CODE_POST
 
     @staticmethod
     def responseNeeded():
@@ -255,11 +256,11 @@ class backCommand(Command):
 
     @staticmethod
     def getClass():
-        return Class.METHOD
+        return CLASS_METHOD
 
     @staticmethod
     def getCode():
-        return Code.POST
+        return CODE_POST
 
     @staticmethod
     def responseNeeded():
@@ -282,11 +283,11 @@ class searchCommand(Command):
 
     @staticmethod
     def getClass():
-        return Class.METHOD
+        return CLASS_METHOD
 
     @staticmethod
     def getCode():
-        return Code.SEARCH
+        return CODE_SEARCH
 
     @staticmethod
     def responseNeeded():
