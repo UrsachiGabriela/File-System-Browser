@@ -1,5 +1,7 @@
 import numpy as np
+import json
 
+json_encoder=json.JSONEncoder()
 
 class Message:
     def __init__(self,m_type:int,token_len:int,m_class:int,m_code:int,m_id:int,payload:str,version=1,token=0):
@@ -32,11 +34,11 @@ class Message:
         payload=data[5+token_len:].decode('utf-8')
         token=0
         if(token_len):
-            token=data[4:4+token_len]
+            token=data[4:(4+token_len)]
 
         return cls(m_type,token_len,m_class,m_code,m_id,payload,version,token)
 
-        #struct module -- pack/unpack
+        #struct module -- pack/unpack pack('i i 4s',3,4,'trgtr')
 
     def toBytes(self): #toBytes
         data=[]
@@ -46,9 +48,9 @@ class Message:
         data[0] |= (self.token_len & 0x0f)
 
         data.append((self.m_class & 0x07)<<5)
-        data[1] |= (self.m_type & 0x1f)
+        data[1] |= (self.m_code & 0x1f)
 
-        data.append(self.m_id  >> 8)
+        data.append((self.m_id & 0xff00)  >> 8)
         data.append(self.m_id & 0xff)
 
         if(self.token_len > 0):
@@ -60,22 +62,20 @@ class Message:
                 data.append(aux[i])
 
 
-        #PAYLOAD MARKER
-        data.append(0xff)
+        if(len(self.payload)>0):
+            #PAYLOAD MARKER
+            data.append(0xff)
+            payload=self.payload.encode('utf-8')
+            for i in range(0,len(payload)):
+                data.append(payload[i])
 
-
-        if(len(self.payload)):
-            self.payload.encode('utf-8')
-
-        for i in range(0,len(self.payload)):
-            data.append(self.payload[i])
-
-        a = np.array(data)
-        a.tobytes()
+        #a = np.array(data)
+        #a.tobytes(order='F')
 
 
 
-        return bytes(a)
+
+        return bytes(data)
 
 
 
@@ -89,7 +89,7 @@ class Message:
         display += "code: {} \n".format(self.m_code)
         display += "message_id:{} \n".format(self.m_id)
         display += "token: {} \n".format(self.token)
-        display += "payload: {} \n".format(self.payload.encode('utf-8'))
+        display += "payload: {} \n".format(self.payload)
 
 
         return display

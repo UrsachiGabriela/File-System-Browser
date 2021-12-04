@@ -2,6 +2,9 @@ import random
 import socket
 from math import log,ceil
 import queue
+import json
+
+json_encoder=json.JSONEncoder()
 
 from src.CoAP.constants import Param, TYPE_NON_CON_MSG, TYPE_CON_MSG, TYPE_ACK, CLASS_METHOD, CODE_EMPTY
 from src.CoAP.CoAPpackage import Message
@@ -77,6 +80,7 @@ class CoAPclient():
         msg_class=cmd.getClass()
         msg_code=cmd.getCode()
         msg_payload=cmd.payload()
+
         msg_type=type
         msg_id=self.generateMsgID()
         #self.msg_id+=1
@@ -118,22 +122,25 @@ class CoAPclient():
             if(response.m_class==CLASS_METHOD and response.m_code==CODE_EMPTY and response.token_len==0 and  response.token is None ):
                 response=self.receive()
 
-                while(response.token != request.token):
+                #*********************************************************************************************************************
+                while(response.token != request.token):   ## modificare conditie de egalitate (tipuri diferite -> int vs bytearray)
                     response=self.receive()
+                #*********************************************************************************************************************
 
         # request non-confirmabil
         elif (request.m_type==TYPE_NON_CON_MSG):
-            response=self.receive()
 
-            while(response.token != request.token):
+            #*********************************************************************************************************************
+            while(response.token != bin(request.token)):  ## modificare conditie de egalitate (tipuri diferite -> int vs bytearray)
                 response=self.receive()
+            #*********************************************************************************************************************
 
         return response
 
 
     #generare token aleatoriu
     def generateToken(self):
-        return random.randint(0,0xff_ff_ff_ff_ff_ff_ff_ff)
+        return random.randint(0,0xff_ff_ff_ff_ff_ff_ff_ff-1)
 
 
     def generateMsgID(self):
