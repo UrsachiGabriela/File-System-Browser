@@ -21,6 +21,7 @@ class Command(metaclass=abc.ABCMeta):
     def responseNeeded():
         pass
 
+
     @abc.abstractmethod
     def payload(self):
         pass
@@ -30,6 +31,7 @@ class detailsCommand(Command): #list files properties
 
     def __init__(self,pathName:str):
         self.pathName=pathName
+        self.mType=TYPE_NON_CON_MSG  # cererea este confirmabila doar daca se solicita acest lucru din GUI
 
     @staticmethod
     def getClass():
@@ -78,6 +80,7 @@ class createCommand(Command):
     def __init__(self,pathName:str,type:str):
         self.pathName=pathName
         self.type=type #file or folder
+        self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
     def getClass():
@@ -105,6 +108,7 @@ class createCommand(Command):
 class openCommand(Command): #response is the content of file
     def __init__(self,openedPathName:str):
         self.openedPathName=openedPathName
+        self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
     def getClass():
@@ -131,6 +135,7 @@ class saveCommand(Command):
     def __init__(self,savedPathName:str,savedContent:str):
         self.savedPathName=savedPathName
         self.savedContent=savedContent
+        self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
     def getClass():
@@ -157,6 +162,7 @@ class saveCommand(Command):
 class deleteCommand(Command):
     def __init__(self,deletedPathName:str):
         self.deletedPathName=deletedPathName
+        self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
     def getClass():
@@ -183,6 +189,7 @@ class renameCommand(Command):
     def __init__(self,path:str,name:str):
         self.path=path
         self.name=name
+        self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
     def getClass():
@@ -210,7 +217,7 @@ class moveCommand(Command):
     def __init__(self,sourcePath:str,destinationPath:str):
         self.sourcePath=sourcePath
         self.destinationPath=destinationPath
-
+        self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
     def getClass():
@@ -253,6 +260,7 @@ class moveCommand(Command):
 class backCommand(Command):
     def __init__(self,currentPath:str):
         self.currentPath=currentPath
+        self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
     def getClass():
@@ -280,6 +288,7 @@ class searchCommand(Command):
     def __init__(self,searchedPathName:str,targetName:str):
         self.searchedPathName=searchedPathName
         self.targetName=targetName
+        self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
     def getClass():

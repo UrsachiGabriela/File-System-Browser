@@ -1,17 +1,19 @@
 import numpy as np
 import json
 
+from src.CoAP.constants import *
+
 json_encoder=json.JSONEncoder()
 
 class Message:
-    def __init__(self,m_type:int,token_len:int,m_class:int,m_code:int,m_id:int,payload:str,version=1,token=0):
+    def __init__(self,m_type:int,token_len:int,m_class:int,m_code:int,m_id:int,payload:str,version=DEFAULT_VERSION,token=0):
         self.version=version
         self.m_type=m_type
         self.token_len=token_len
         self.m_class=m_class
         self.m_code=m_code
         self.m_id=m_id
-        self.token=token
+        self.token=token #de tip bytes
         self.payload=payload
 
     @classmethod
@@ -55,11 +57,11 @@ class Message:
 
         if(self.token_len > 0):
 
-            aux=self.token.to_bytes(self.token_len,'big')
-            aux=bytearray(aux)
+            #aux=self.token.to_bytes(self.token_len,'big')
+            #aux=bytearray(aux)
 
             for i in range (0,self.token_len):
-                data.append(aux[i])
+                data.append(self.token[i])
 
 
         if(len(self.payload)>0):

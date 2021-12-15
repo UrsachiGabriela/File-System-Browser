@@ -2,6 +2,9 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
 
+from src.CoAP.commands import *
+from src.CoAP.CoAPclient import q
+
 
 # root window
 root = tk.Tk()
@@ -11,17 +14,20 @@ root.title('Browser FS CoAP')
 
 name= tk.StringVar()
 
-#def create_dir_clicked():
- #   """ callback when the create_dir button is clicked
- #    """
- #   msg = f'Se creeaza directorul {name.get()}!'
- #   showinfo(
- #       title='Information',
- #       message=msg
-  #  )
+    #def create_dir_clicked():
+     #   """ callback when the create_dir button is clicked
+     #    """
+     #   msg = f'Se creeaza directorul {name.get()}!'
+     #   showinfo(
+     #       title='Information',
+     #       message=msg
+      #  )
 def create_file_clicked():
     """ callback when the create_file button is clicked
     """
+    cmd=createCommand(name.get(),'file')
+    cmd.mType=TYPE_CON_MSG
+    q.put(cmd)
     msg = f'Se creeaza fisierul {name.get()}!'
     showinfo(
         title='Information',
@@ -69,13 +75,13 @@ def move_clicked():
         message=msg
     )
 
-#def cd_clicked():
- #   """ callback when the cd button is clicked
- #   """
- #   msg = f'Se navigheaza spre directorul {name.get()}!'
- #   showinfo(
- #     message=msg
-   # )
+    #def cd_clicked():
+     #   """ callback when the cd button is clicked
+     #   """
+     #   msg = f'Se navigheaza spre directorul {name.get()}!'
+     #   showinfo(
+     #     message=msg
+       # )
 def dir_back_clicked():
     """ callback when the dir_back button is clicked
     """
@@ -116,6 +122,7 @@ name_entry.focus()
 # create_file button
 create_file_button = ttk.Button(browser, text="Create_file", command=create_file_clicked)
 create_file_button.pack(fill='x', expand=True, pady=10)
+
 
 # open button
 open_button = ttk.Button(browser, text="Open", command=open_clicked)
