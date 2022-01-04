@@ -4,17 +4,21 @@ import socket
 from math import log,ceil
 import queue
 import json
+import logging
 
 json_encoder=json.JSONEncoder()
+json_decoder=json.JSONDecoder()
 
 from src.CoAP.CoAPpackage import Message
 from src.CoAP.commands import *
+
+
 
 # coada folosita pt a stoca cererile date din interfata pt a le trimite la server
 q=queue.Queue(25)
 
 class CoAPclient():
-    def __init__(self,myPort:int,serverPort:int,serverIp:str):
+    def __init__(self,myPort:int,serverPort:int,serverIp:str,message_queue:queue.Queue=None):
         self.myPort=myPort
         self.serverPort=serverPort
         self.serverIp=serverIp
@@ -24,12 +28,21 @@ class CoAPclient():
 
         self.running=False
 
+        self.logger=logging.Logger(name='CoAP_client')
+        handler=logging.FileHandler('client.log')
+        handler.setLevel(logging.DEBUG)
+        handler.setFormatter(logging.Formatter('%(name)s - %(asctime)s - %(levelname)s - %(message)s'))
+        self.logger.addHandler(handler)
 
+
+        message_queue.put(deleteCommand('newdirectory')) ###provizoriu
+        self.message_queue=message_queue
 
 
     def start_connection(self):
         self.mySocket.bind( ('0.0.0.0', int(self.myPort)))
-        print('Connection started. :) ')
+        self.logger.info('Connection started.')
+        self.run()
 
         #self.mySocket.sendto(bytes("Salut",encoding="ascii"),(self.serverIp,int(self.serverPort)))
         #data,address=self.mySocket.recvfrom(1024)
@@ -37,29 +50,33 @@ class CoAPclient():
 
 
     def run(self):
-        self.running=True
+        try:
+            self.running=True
 
-        while(self.running):
-            # se asteapta pana cand se da o comanda din interfata, pentru a o trimite la server
-            #cmd=q.get(block=True)
-
-            cmd=openCommand('main.py')#provizoriu
-            cmd.mType=TYPE_CON_MSG
-
-            request=self.create_request(cmd)
-            print("Se trimite cererea la server: \n",request,"\n\n\n")
-
-            if(request.m_type==TYPE_NON_CON_MSG and cmd.response_needed()==False):
-                self.send(request) # se trimite cererea, fara a astepta raspuns sau ack de la server
-            else : # mesaj confirmabil sau comanda care asteapta date de la server
-                response=self.match_response(request)
-
-                print("Raspuns de la server: \n", response)
-                # se parseaza raspunsul
+            while(self.running):
+                # se asteapta pana cand se da o comanda din interfata, pentru a o trimite la server
+                cmd=self.message_queue.get(block=True)
+                cmd.mType=TYPE_CON_MSG
+                request=self.create_request(cmd)
 
 
+                #print("Se trimite cererea la server: \n",request,"\n\n\n")
+                self.logger.info('Request is sent to server : \n'+ str(request))
+                if(request.m_type==TYPE_NON_CON_MSG and cmd.response_needed()==False):
 
-            self.running=False
+                    self.send(request) # se trimite cererea, fara a astepta raspuns sau ack de la server
+                else : # mesaj confirmabil sau comanda care asteapta date de la server
+                    response=self.match_response(request)
+
+                    #print("Raspuns de la server: \n", response)
+                    self.logger.info('Server response : \n' + str(response))
+                    # se parseaza raspunsul
+
+
+
+                self.running=False
+        except ConnectionResetError as err:
+            self.logger.exception(err)
 
 
 
@@ -77,7 +94,7 @@ class CoAPclient():
 
         msg_type=cmd.mType
         msg_id=self.generate_msg_ID()
-        #self.msg_id+=1
+
 
         token_len=self.generate_token_len()
         #se genereaza un token aleatoriu de dimensiune token_len bytes
@@ -92,6 +109,7 @@ class CoAPclient():
     # se trimite pachet catre server ( sub forma de octeti )
     def send(self,msg:Message):
         self.mySocket.sendto(msg.to_bytes(), (self.serverIp, int(self.serverPort)))
+
 
     # se primeste pachet de la server ( sub forma de octeti )
     def receive(self)->Message:
@@ -136,7 +154,8 @@ class CoAPclient():
                             # exceptie???---------------------------------------------------------------------------------------------
 
                         # daca nu e RESET sau eroare => ACK
-                        print("Request acknowledged")
+                        #print("Request acknowledged")
+                        self.logger.info('Request acknowledged')
 
 
 
@@ -165,7 +184,8 @@ class CoAPclient():
                     return response
 
             except socket.timeout as e:
-                print(e)
+                #print(e)
+                self.logger.exception(e)
 
 
 
@@ -193,7 +213,8 @@ class CoAPclient():
     def end_connection(self):
         self.running=False
         self.mySocket.close()
-        print('Connection stopped. :( ')
+        #print('Connection stopped. :( ')
+        self.logger.info('Connection stopped. :( ')
 
 
         # 64ko
@@ -204,3 +225,7 @@ class CoAPclient():
     def acknowledge_for_server(self,response:Message):
         ack=Message(m_type=TYPE_ACK,token_len=0,m_class=CLASS_METHOD,m_code=CODE_EMPTY,m_id=response.m_id,payload='',token=0x0)
         self.send(ack)
+
+
+    def log_error(err):
+        logging.error(f"Client error: {err}")

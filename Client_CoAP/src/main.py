@@ -1,31 +1,43 @@
-from src.CoAP.CoAPclient import CoAPclient
+import json
+import queue
 
+from src.CoAP.CoAPclient import CoAPclient, json_encoder
+from src.FileSystem.FS import File
 
 if __name__=='__main__':
 
 
-     client=CoAPclient(10001,10002,'127.0.0.1')
+     client=CoAPclient(10001,10002,'127.0.0.1',queue.Queue())
      client.start_connection()
-     client.run()
+
+
+     #
+     # p={
+     #      "cmd":"move",
+     #      "sourcePath":"self.sourcePath",
+     #      "destinationPath":"self.destinationPath"
+     # }
+     # print(p["cmd"])
+     #
+
+     # for i in range(0,len(payload)):
+     #      data.append(payload[i])
      #client.endConnection()
 
-     # primire ACK -serial...???
-     # ar trebui tratat cazul in care pt un request con primesc raspuns inainte de ACK ?  RASPUNS : da --> pun niste if-uri in primul while
+
 
      # utilizare coada
-     # timeout
 
-     #daca raspunsul primit separat de ack este de tip con, ar trebui trimis un ack catre server!!
-     # pot retransmite un mesaj de tip non-confirmabil daca acesta contine o comanda ce asteapta date de la server??
+
 
 
      # interfata
 
 
-     # server de test ?
 
 
 
      # port mapping/ forwarding
 
 
+     #print(json_decoder.decode(Message.decode(msg.to_bytes()).payload)['cmd'])

@@ -26,6 +26,10 @@ class Command(metaclass=abc.ABCMeta):
     def payload(self):
         pass
 
+    @abc.abstractmethod
+    def parse_response(self):
+        pass
+
 
 class detailsCommand(Command): #list files properties
 
@@ -53,6 +57,9 @@ class detailsCommand(Command): #list files properties
         }
 
         return json.dumps(p)
+
+    def parse_response(self):
+        pass
 
 
 
@@ -104,6 +111,9 @@ class createCommand(Command):
 
         return json.dumps(p)
 
+    def parse_response(self):
+        pass
+
 
 class openCommand(Command): #response is the content of file
     def __init__(self,openedPathName:str):
@@ -116,7 +126,7 @@ class openCommand(Command): #response is the content of file
 
     @staticmethod
     def get_code():
-        return CODE_POST
+        return CODE_GET
 
     @staticmethod
     def response_needed():
@@ -129,6 +139,9 @@ class openCommand(Command): #response is the content of file
         }
 
         return json.dumps(p)
+
+    def parse_response(self):
+        pass
 
 
 class saveCommand(Command):
@@ -158,6 +171,9 @@ class saveCommand(Command):
 
         return json.dumps(p)
 
+    def parse_response(self):
+        pass
+
 
 class deleteCommand(Command):
     def __init__(self,deletedPathName:str):
@@ -183,6 +199,9 @@ class deleteCommand(Command):
         }
 
         return json.dumps(p)
+
+    def parse_response(self):
+        pass
 
 
 class renameCommand(Command):
@@ -212,6 +231,9 @@ class renameCommand(Command):
 
         return json.dumps(p)
 
+    def parse_response(self):
+        pass
+
 
 class moveCommand(Command):
     def __init__(self,sourcePath:str,destinationPath:str):
@@ -239,6 +261,9 @@ class moveCommand(Command):
         }
 
         return json.dumps(p)
+
+    def parse_response(self):
+        pass
 
 #
 # class cdCommand(Command):
@@ -283,6 +308,9 @@ class backCommand(Command):
 
         return json.dumps(p)
 
+    def parse_response(self):
+        pass
+
 
 class searchCommand(Command):
     def __init__(self,searchedPathName:str,targetName:str):
@@ -311,3 +339,6 @@ class searchCommand(Command):
         }
 
         return json.dumps(p)
+
+    def parse_response(self):
+        pass

@@ -6,7 +6,7 @@ from src.CoAP.constants import *
 json_encoder=json.JSONEncoder()
 
 class Message:
-    def __init__(self,m_type:int,token_len:int,m_class:int,m_code:int,m_id:int,payload:str,version=DEFAULT_VERSION,token=0):
+    def __init__(self,m_type:int,token_len:int,m_class:int,m_code:int,m_id:int,payload:str,version=DEFAULT_VERSION,token=0x0):
         self.version=version
         self.m_type=m_type
         self.token_len=token_len
