@@ -14,20 +14,21 @@ from src.CoAP.commands import *
 q=queue.Queue(25)
 
 class CoAPclient():
-    def __init__(self,serverPort:int,serverIp:str):
+    def __init__(self,myPort:int,serverPort:int,serverIp:str):
+        self.myPort=myPort
         self.serverPort=serverPort
         self.serverIp=serverIp
         self.mySocket=socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
 
-        self.mySocket.settimeout(self.randomTimeout())
+        self.mySocket.settimeout(self.random_timeout())
 
         self.running=False
 
 
 
 
-    def startConnection(self):
-        #self.mySocket.bind( ('0.0.0.0', int(self.myPort)))
+    def start_connection(self):
+        self.mySocket.bind( ('0.0.0.0', int(self.myPort)))
         print('Connection started. :) ')
 
         #self.mySocket.sendto(bytes("Salut",encoding="ascii"),(self.serverIp,int(self.serverPort)))
@@ -43,14 +44,15 @@ class CoAPclient():
             #cmd=q.get(block=True)
 
             cmd=openCommand('main.py')#provizoriu
+            cmd.mType=TYPE_CON_MSG
 
-            request=self.createRequest(cmd)
+            request=self.create_request(cmd)
             print("Se trimite cererea la server: \n",request,"\n\n\n")
 
-            if(request.m_type==TYPE_NON_CON_MSG and cmd.responseNeeded()==False):
+            if(request.m_type==TYPE_NON_CON_MSG and cmd.response_needed()==False):
                 self.send(request) # se trimite cererea, fara a astepta raspuns sau ack de la server
             else : # mesaj confirmabil sau comanda care asteapta date de la server
-                response=self.matchResponse(request)
+                response=self.match_response(request)
 
                 print("Raspuns de la server: \n", response)
                 # se parseaza raspunsul
@@ -68,18 +70,18 @@ class CoAPclient():
 
 
     # se creeaza o cerere/un mesaj in functie de comanda primita din interfata
-    def createRequest(self,cmd)->Message:
-        msg_class=cmd.getClass()
-        msg_code=cmd.getCode()
+    def create_request(self, cmd)->Message:
+        msg_class=cmd.get_class()
+        msg_code=cmd.get_code()
         msg_payload=cmd.payload()
 
         msg_type=cmd.mType
-        msg_id=self.generateMsgID()
+        msg_id=self.generate_msg_ID()
         #self.msg_id+=1
 
-        token_len=self.generateTokenLen()
+        token_len=self.generate_token_len()
         #se genereaza un token aleatoriu de dimensiune token_len bytes
-        token=self.generateToken(token_len)
+        token=self.generate_token(token_len)
 
         msg=Message(m_type=msg_type,token_len=token_len,m_class=msg_class,m_code=msg_code,m_id=msg_id,payload=msg_payload,version=1,token=token)
 
@@ -89,7 +91,7 @@ class CoAPclient():
 
     # se trimite pachet catre server ( sub forma de octeti )
     def send(self,msg:Message):
-        self.mySocket.sendto(msg.toBytes(),(self.serverIp,int(self.serverPort)))
+        self.mySocket.sendto(msg.to_bytes(), (self.serverIp, int(self.serverPort)))
 
     # se primeste pachet de la server ( sub forma de octeti )
     def receive(self)->Message:
@@ -98,7 +100,7 @@ class CoAPclient():
 
 
 
-    def matchResponse(self,request:Message)->Message:
+    def match_response(self, request:Message)->Message:
         # se trimite cererea : in cazul in care nu se primeste raspuns in intervalul de timp dat (mySocket.settimeout),
         # se retrimite cererea, dar doar daca nu s-a atins un nr maxim (MAX_RETRANSMIT) de transmisii
         transmitted=0
@@ -108,48 +110,54 @@ class CoAPclient():
             try:
                 response=self.receive()
 
-
-            # request confirmabil
+                # request confirmabil
                 if(request.m_type==TYPE_CON_MSG):
-                    #se asteapta pana cand se primeste un mesaj de tip ack cu acelasi id
 
-                    #while(not(response.m_type == TYPE_ACK and response.m_id == request.m_id)):
-                    #    response=self.receive()  # se asteapta pana se primeste un ack de la server pt cererea trimisa
-
-
-                    # ?????????---------------------------------------------------------------------------------------------
-
-                    while(not(response.m_id == request.m_id)):
-                        response=self.receive()  # se asteapta pana se primeste un ack de la server pt cererea trimisa
-
-                    #s-a primit un raspuns cu acelasi msg_id ca al request-ului
-                    #verific daca e ACK sau RESET
-
-                    # daca e RESET il returnez, urmand ca interpretarea raspunsului sa fie facuta in fct separata
-                    if response.m_type==TYPE_RST:
-                        return response
-                    elif response.m_type!=TYPE_ACK:
-                        print("Error")
-                        # exceptie???---------------------------------------------------------------------------------------------
-
-                    # daca nu e RESET sau eroare => ACK
-                    print("Request acknowledged")
-
-                    # verific daca am piggybacked response sau nu
-
-                    # raspuns separat
-                    if(response.m_class==CLASS_METHOD and response.m_code==CODE_EMPTY and response.token_len==0 and  response.token is None ):
+                    #astept pana cand primesc fie acknowledge, fie direct raspunsul pt cererea trimisa
+                    while(not(response.m_id == request.m_id) and not(response.token == request.token)):
                         response=self.receive()
 
-                        while(response.token != request.token):
+
+                    if response.m_id != request.m_id: # raspuns inainte de ack (response.token == request.token)
+                        self.acknowledge_for_server(response)
+                        return response
+                    else: #response.m_id == request.m_id: ->  primesc intai ack
+
+                        #s-a primit un raspuns cu acelasi msg_id ca al request-ului
+                        #verific daca e ACK sau RESET
+
+
+                        # daca e RESET il returnez, urmand ca interpretarea raspunsului sa fie facuta in fct separata
+                        if response.m_type==TYPE_RST:
+                            return response
+                        elif response.m_type!=TYPE_ACK:
+                            print("Error")
+
+                            # exceptie???---------------------------------------------------------------------------------------------
+
+                        # daca nu e RESET sau eroare => ACK
+                        print("Request acknowledged")
+
+
+
+
+                        # verific daca am piggybacked response sau nu
+                        # raspuns separat (ack de tip empty)
+                        if(response.m_class==CLASS_METHOD and response.m_code==CODE_EMPTY and response.token_len==0 and  response.token is None ):
                             response=self.receive()
 
+                            while(response.token != request.token):
+                                response=self.receive()
 
-                    return response
-                    # daca raspunsul primit separat de ack este de tip con, ar trebui trimis un ack catre server !!
+                            # send acknowledge to server for con response
+                            self.acknowledge_for_server(response)
+                            return response
+                        else:
+                            return response
+
 
                 # request non-confirmabil
-                elif (request.m_type==TYPE_NON_CON_MSG):
+                elif (request.m_type==TYPE_NON_CON_MSG):  # as putea sa nu retransmit cererea non-confirmabila !!!!
                     # daca cererea trimisa este non-confirmabila, se asteapta doar raspunsul (fara ack) cu acelasi token
                     while(response.token != request.token):
                         response=self.receive()
@@ -162,17 +170,17 @@ class CoAPclient():
 
 
 
-    def generateTokenLen(self):
+    def generate_token_len(self):
         return random.randint(1,8)
 
     #generare token aleatoriu
-    def generateToken(self,token_len):
+    def generate_token(self, token_len):
         return secrets.token_bytes(token_len)
 
 
 
 
-    def generateMsgID(self):
+    def generate_msg_ID(self):
         return random.randint(0,0xffff)
 
     # token_len
@@ -182,7 +190,7 @@ class CoAPclient():
        return int(ceil(log(token, 256)))
 
 
-    def endConnection(self):
+    def end_connection(self):
         self.running=False
         self.mySocket.close()
         print('Connection stopped. :( ')
@@ -190,5 +198,9 @@ class CoAPclient():
 
         # 64ko
 
-    def randomTimeout(self):
+    def random_timeout(self):
         return random.uniform(ACK_TIMEOUT,ACK_TIMEOUT * ACK_RANDOM_FACTOR)
+
+    def acknowledge_for_server(self,response:Message):
+        ack=Message(m_type=TYPE_ACK,token_len=0,m_class=CLASS_METHOD,m_code=CODE_EMPTY,m_id=response.m_id,payload='',token=0x0)
+        self.send(ack)

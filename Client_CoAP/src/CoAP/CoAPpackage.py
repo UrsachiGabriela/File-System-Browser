@@ -42,7 +42,7 @@ class Message:
 
         #struct module -- pack/unpack pack('i i 4s',3,4,'trgtr')
 
-    def toBytes(self): #toBytes
+    def to_bytes(self): #toBytes
         data=[]
 
         data.append((0x03 & self.version)<<6)

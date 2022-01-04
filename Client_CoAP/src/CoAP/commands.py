@@ -8,17 +8,17 @@ class Command(metaclass=abc.ABCMeta):
 
     @staticmethod
     @abc.abstractmethod
-    def getClass():
+    def get_class():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def getCode():
+    def get_code():
         pass
 
     @staticmethod
     @abc.abstractmethod
-    def responseNeeded():
+    def response_needed():
         pass
 
 
@@ -34,15 +34,15 @@ class detailsCommand(Command): #list files properties
         self.mType=TYPE_NON_CON_MSG  # cererea este confirmabila doar daca se solicita acest lucru din GUI
 
     @staticmethod
-    def getClass():
+    def get_class():
         return CLASS_METHOD
 
     @staticmethod
-    def getCode():
+    def get_code():
         return CODE_GET
 
     @staticmethod
-    def responseNeeded():
+    def response_needed():
         return True
 
 
@@ -83,15 +83,15 @@ class createCommand(Command):
         self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
-    def getClass():
+    def get_class():
         return CLASS_METHOD
 
     @staticmethod
-    def getCode():
+    def get_code():
         return CODE_POST
 
     @staticmethod
-    def responseNeeded():
+    def response_needed():
         return False
 
 
@@ -111,15 +111,15 @@ class openCommand(Command): #response is the content of file
         self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
-    def getClass():
+    def get_class():
         return CLASS_METHOD
 
     @staticmethod
-    def getCode():
+    def get_code():
         return CODE_POST
 
     @staticmethod
-    def responseNeeded():
+    def response_needed():
         return True
 
     def payload(self):
@@ -138,15 +138,15 @@ class saveCommand(Command):
         self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
-    def getClass():
+    def get_class():
         return CLASS_METHOD
 
     @staticmethod
-    def getCode():
+    def get_code():
         return CODE_POST
 
     @staticmethod
-    def responseNeeded():
+    def response_needed():
         return False
 
     def payload(self):
@@ -165,15 +165,15 @@ class deleteCommand(Command):
         self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
-    def getClass():
+    def get_class():
         return CLASS_METHOD
 
     @staticmethod
-    def getCode():
+    def get_code():
         return CODE_POST
 
     @staticmethod
-    def responseNeeded():
+    def response_needed():
         return False
 
     def payload(self):
@@ -192,15 +192,15 @@ class renameCommand(Command):
         self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
-    def getClass():
+    def get_class():
         return CLASS_METHOD
 
     @staticmethod
-    def getCode():
+    def get_code():
         return CODE_POST
 
     @staticmethod
-    def responseNeeded():
+    def response_needed():
         return False
 
     def payload(self):
@@ -220,15 +220,15 @@ class moveCommand(Command):
         self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
-    def getClass():
+    def get_class():
         return CLASS_METHOD
 
     @staticmethod
-    def getCode():
+    def get_code():
         return CODE_POST
 
     @staticmethod
-    def responseNeeded():
+    def response_needed():
         return False
 
     def payload(self):
@@ -263,15 +263,15 @@ class backCommand(Command):
         self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
-    def getClass():
+    def get_class():
         return CLASS_METHOD
 
     @staticmethod
-    def getCode():
+    def get_code():
         return CODE_POST
 
     @staticmethod
-    def responseNeeded():
+    def response_needed():
         return True
 
 
@@ -291,15 +291,15 @@ class searchCommand(Command):
         self.mType=TYPE_NON_CON_MSG
 
     @staticmethod
-    def getClass():
+    def get_class():
         return CLASS_METHOD
 
     @staticmethod
-    def getCode():
+    def get_code():
         return CODE_SEARCH
 
     @staticmethod
-    def responseNeeded():
+    def response_needed():
         return True
 
     def payload(self):
