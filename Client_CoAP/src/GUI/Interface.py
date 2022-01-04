@@ -1,9 +1,10 @@
 import tkinter as tk
+from doctest import master
 from tkinter import ttk
 from tkinter.messagebox import showinfo
-
 from src.CoAP.commands import *
 from src.CoAP.CoAPclient import q
+import threading
 
 
 # root window
@@ -11,6 +12,7 @@ root = tk.Tk()
 root.geometry("400x520")
 root.resizable(False, False)
 root.title('Browser FS CoAP')
+
 
 name= tk.StringVar()
 
@@ -22,6 +24,13 @@ name= tk.StringVar()
      #       title='Information',
      #       message=msg
       #  )
+
+
+def on_connect(self, ip: str, port: int):
+    self.active_page.display_message('connecting...', color='green', duration=-1)
+    self.client_thread = threading.Thread(target=lambda: self.start_client(ip, port))
+    self.client_thread.start()
+
 def create_file_clicked():
     """ callback when the create_file button is clicked
     """
@@ -33,14 +42,18 @@ def create_file_clicked():
         title='Information',
         message=msg
     )
-def open_clicked():
-    """ callback when the open button is clicked
-    """
-    msg = f'Se deschide fisierul {name.get()}!'
-    showinfo(
-        title='Information',
-        message=msg
-    )
+#def open_clicked():
+   # """ callback when the open button is clicked
+   # """
+    #global opened_file
+    #opened_file = 1
+    #msg = f'Se deschide fisierul {name.get()}!'
+    #showinfo(
+    #    title='Information',
+    #    message=msg
+    #)
+
+
 def save_clicked():
     """ callback when the save button is clicked
     """
@@ -98,6 +111,34 @@ def search_clicked():
         title='Information',
         message=msg
     )
+
+def openNewWindow():
+
+    # Toplevel object which will
+    # be treated as a new window
+    newWindow = tk.Toplevel(master)
+
+    # sets the title
+    newWindow.title("Opened File Content")
+
+    # sets the geometry
+    newWindow.geometry("400x350")
+
+    T = tk.Text(newWindow, height = 18, width = 52)
+
+    # A Label widget to show in toplevel
+    l = tk.Label(newWindow, text = name.get())
+    l.config(font =("Courier", 14))
+    content = """Aici se va afisa continutul fisieruluuuuuui"""
+    # Create an Exit button.
+    b2 = tk.Button(newWindow, text = "Exit", command =newWindow.destroy)
+    l.pack()
+    T.pack()
+    b2.pack()
+    T.insert(tk.END, content)
+
+
+
 # Browser frame
 browser = ttk.Frame(root)
 browser.pack(padx=20, pady=10, fill='x', expand=True)
@@ -125,7 +166,7 @@ create_file_button.pack(fill='x', expand=True, pady=10)
 
 
 # open button
-open_button = ttk.Button(browser, text="Open", command=open_clicked)
+open_button = ttk.Button(browser, text="Open", command=openNewWindow)
 open_button.pack(fill='x', expand=True, pady=10)
 
 # save button
