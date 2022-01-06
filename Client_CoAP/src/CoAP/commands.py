@@ -1,10 +1,14 @@
 import abc
 import json
+from typing import Callable
 
 from src.CoAP.constants import *
 
 
 class Command(metaclass=abc.ABCMeta):
+
+    def __init__(self,call_fct:Callable=None):
+        self.call_fct=call_fct
 
     @staticmethod
     @abc.abstractmethod
@@ -33,9 +37,12 @@ class Command(metaclass=abc.ABCMeta):
 
 class detailsCommand(Command): #list files properties
 
-    def __init__(self,pathName:str):
+    def __init__(self, pathName: str, call_fct: Callable=None):
+        super().__init__(call_fct)
         self.pathName=pathName
         self.mType=TYPE_NON_CON_MSG  # cererea este confirmabila doar daca se solicita acest lucru din GUI
+
+
 
     @staticmethod
     def get_class():
@@ -84,7 +91,8 @@ class detailsCommand(Command): #list files properties
 
 class createCommand(Command):
 
-    def __init__(self,pathName:str,type:str):
+    def __init__(self, pathName: str, type: str, call_fct: Callable=None):
+        super().__init__(call_fct)
         self.pathName=pathName
         self.type=type #file or folder
         self.mType=TYPE_NON_CON_MSG
@@ -116,7 +124,8 @@ class createCommand(Command):
 
 
 class openCommand(Command): #response is the content of file
-    def __init__(self,openedPathName:str):
+    def __init__(self, openedPathName: str, call_fct: Callable=None):
+        super().__init__(call_fct)
         self.openedPathName=openedPathName
         self.mType=TYPE_NON_CON_MSG
 
@@ -145,7 +154,8 @@ class openCommand(Command): #response is the content of file
 
 
 class saveCommand(Command):
-    def __init__(self,savedPathName:str,savedContent:str):
+    def __init__(self, savedPathName: str, savedContent: str, call_fct: Callable=None):
+        super().__init__(call_fct)
         self.savedPathName=savedPathName
         self.savedContent=savedContent
         self.mType=TYPE_NON_CON_MSG
@@ -176,7 +186,8 @@ class saveCommand(Command):
 
 
 class deleteCommand(Command):
-    def __init__(self,deletedPathName:str):
+    def __init__(self, deletedPathName: str, call_fct: Callable=None):
+        super().__init__(call_fct)
         self.deletedPathName=deletedPathName
         self.mType=TYPE_NON_CON_MSG
 
@@ -205,7 +216,8 @@ class deleteCommand(Command):
 
 
 class renameCommand(Command):
-    def __init__(self,path:str,name:str):
+    def __init__(self, path: str, name: str, call_fct: Callable=None):
+        super().__init__(call_fct)
         self.path=path
         self.name=name
         self.mType=TYPE_NON_CON_MSG
@@ -236,7 +248,8 @@ class renameCommand(Command):
 
 
 class moveCommand(Command):
-    def __init__(self,sourcePath:str,destinationPath:str):
+    def __init__(self, sourcePath: str, destinationPath: str, call_fct: Callable=None):
+        super().__init__(call_fct)
         self.sourcePath=sourcePath
         self.destinationPath=destinationPath
         self.mType=TYPE_NON_CON_MSG
@@ -283,7 +296,8 @@ class moveCommand(Command):
 #         return True
 
 class backCommand(Command):
-    def __init__(self,currentPath:str):
+    def __init__(self, currentPath: str, call_fct: Callable=None):
+        super().__init__(call_fct)
         self.currentPath=currentPath
         self.mType=TYPE_NON_CON_MSG
 
@@ -313,7 +327,8 @@ class backCommand(Command):
 
 
 class searchCommand(Command):
-    def __init__(self,searchedPathName:str,targetName:str):
+    def __init__(self, searchedPathName: str, targetName: str, call_fct: Callable=None):
+        super().__init__(call_fct)
         self.searchedPathName=searchedPathName
         self.targetName=targetName
         self.mType=TYPE_NON_CON_MSG
