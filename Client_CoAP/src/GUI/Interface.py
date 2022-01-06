@@ -3,7 +3,7 @@ from doctest import master
 from tkinter import ttk
 from tkinter.messagebox import showinfo
 from src.CoAP.commands import *
-from src.CoAP.CoAPclient import q
+
 import threading
 
 
@@ -36,7 +36,7 @@ def create_file_clicked():
     """
     cmd=createCommand(name.get(),'file')
     cmd.mType=TYPE_CON_MSG
-    q.put(cmd)
+    #q.put(cmd)
     msg = f'Se creeaza fisierul {name.get()}!'
     showinfo(
         title='Information',

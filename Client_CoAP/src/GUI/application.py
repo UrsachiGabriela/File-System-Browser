@@ -1,5 +1,9 @@
+import queue
+import threading
 import tkinter as tk
 
+from src.CoAP.CoAPclient import CoAPclient
+from src.CoAP.commands import createCommand
 from src.GUI.pages.FSbrowserPage import FSBrowserPage
 from src.GUI.pages.ConnectionPage import ConnectionPage
 
@@ -9,6 +13,8 @@ class Application(tk.Tk):
     def __init__(self):
         super().__init__()
         tk.Tk.wm_title(self,"CoAP CLIENT")
+
+        self.message_queue=queue.Queue()
 
 
         self.container=tk.Frame(self,bg='gray97')
@@ -29,3 +35,18 @@ class Application(tk.Tk):
         frame=self.frames[name]
         frame.init_gui()
         frame.tkraise()
+
+    def connect_to_server(self,serverPort:int,serverIP:str):
+        self.show_frame('FSBrowserPage')
+        self.client_thread=threading.Thread(target=lambda: self.init_client(serverPort,serverIP))
+        self.client_thread.start()
+
+    def init_client(self,serverPort:int,serverIP:str):
+        self.message_queue.put(createCommand('newdirectory','folder')) ###provizoriu
+
+
+        self.client=CoAPclient(10001,serverPort,serverIP,self.message_queue) #initializare client CoAP
+        self.client.run()
+
+    def add_cmd(self,cmd):
+        self.message_queue.put(cmd)

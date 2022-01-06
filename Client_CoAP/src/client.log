@@ -1,0 +1,42 @@
+CoAP_client - 2022-01-06 16:15:56,150 - INFO - Connection started.
+CoAP_client - 2022-01-06 16:15:56,160 - INFO - Request is sent to server : 
+version:1 
+ type:0 
+ token_len:7 
+ class:0 
+ code: 2 
+message_id:24425 
+token: b'\xd1Gl \xd0\xdbx' 
+payload: {"cmd": "create", "path": "newdirectory", "type": "folder"} 
+
+CoAP_client - 2022-01-06 16:15:56,160 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "C:\Users\Hp\OneDrive\Desktop\rc_p copie\src\CoAP\CoAPclient.py", line 61, in run
+    response=self.match_response(request)
+  File "C:\Users\Hp\OneDrive\Desktop\rc_p copie\src\CoAP\CoAPclient.py", line 121, in match_response
+    response=self.receive()
+  File "C:\Users\Hp\OneDrive\Desktop\rc_p copie\src\CoAP\CoAPclient.py", line 108, in receive
+    fromServer,addr=self.mySocket.recvfrom(1024)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+CoAP_client - 2022-01-06 16:16:16,968 - INFO - Connection started.
+CoAP_client - 2022-01-06 16:16:16,968 - INFO - Request is sent to server : 
+version:1 
+ type:0 
+ token_len:6 
+ class:0 
+ code: 2 
+message_id:43002 
+token: b'z\x16\xfd\xbb\x0eI' 
+payload: {"cmd": "create", "path": "newdirectory", "type": "folder"} 
+
+CoAP_client - 2022-01-06 16:16:16,978 - INFO - Request acknowledged
+CoAP_client - 2022-01-06 16:16:16,978 - INFO - Server response : 
+version:1 
+ type:2 
+ token_len:6 
+ class:2 
+ code: 1 
+message_id:43002 
+token: b'z\x16\xfd\xbb\x0eI' 
+payload: {"client_cmd": "create", "status": "created"} 
+

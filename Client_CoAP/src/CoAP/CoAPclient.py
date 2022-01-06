@@ -14,8 +14,8 @@ from src.CoAP.commands import *
 
 
 
-# coada folosita pt a stoca cererile date din interfata pt a le trimite la server
-q=queue.Queue(25)
+
+
 
 class CoAPclient():
     def __init__(self,myPort:int,serverPort:int,serverIp:str,message_queue:queue.Queue=None):
@@ -23,7 +23,7 @@ class CoAPclient():
         self.serverPort=serverPort
         self.serverIp=serverIp
         self.mySocket=socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-
+        self.mySocket.bind( ('0.0.0.0', int(self.myPort)))
         self.mySocket.settimeout(self.random_timeout())
 
         self.running=False
@@ -35,24 +35,16 @@ class CoAPclient():
         self.logger.addHandler(handler)
 
 
-        message_queue.put(deleteCommand('newdirectory')) ###provizoriu
+
+
         self.message_queue=message_queue
 
-
-    def start_connection(self):
-        self.mySocket.bind( ('0.0.0.0', int(self.myPort)))
-        self.logger.info('Connection started.')
-        self.run()
-
-        #self.mySocket.sendto(bytes("Salut",encoding="ascii"),(self.serverIp,int(self.serverPort)))
-        #data,address=self.mySocket.recvfrom(1024)
-        #print("S-a receptionat ", str(data), " de la ", address)
 
 
     def run(self):
         try:
             self.running=True
-
+            self.logger.info('Connection started.')
             while(self.running):
                 # se asteapta pana cand se da o comanda din interfata, pentru a o trimite la server
                 cmd=self.message_queue.get(block=True)
