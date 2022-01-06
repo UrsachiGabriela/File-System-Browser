@@ -18,10 +18,13 @@ from src.CoAP.commands import *
 
 
 class CoAPclient():
-    def __init__(self,myPort:int,serverPort:int,serverIp:str,message_queue:queue.Queue=None):
+    def __init__(self,myPort:int,serverPort:int,serverIp:str,controller,message_queue:queue.Queue=None):
         self.myPort=myPort
         self.serverPort=serverPort
         self.serverIp=serverIp
+
+        self.controller=controller
+
         self.mySocket=socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         self.mySocket.bind( ('0.0.0.0', int(self.myPort)))
         self.mySocket.settimeout(self.random_timeout())
@@ -47,8 +50,8 @@ class CoAPclient():
             self.logger.info('Connection started.')
             while(self.running):
                 # se asteapta pana cand se da o comanda din interfata, pentru a o trimite la server
-                cmd=self.message_queue.get(block=True)
-                cmd.mType=TYPE_CON_MSG
+                cmd=self.controller.message_queue.get(block=True,timeout=None)
+                print('extrag comanda din coada')
                 request=self.create_request(cmd)
 
 
@@ -57,19 +60,40 @@ class CoAPclient():
                 if(request.m_type==TYPE_NON_CON_MSG and cmd.response_needed()==False):
 
                     self.send(request) # se trimite cererea, fara a astepta raspuns sau ack de la server
+                    # TO DO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    # refresh la continutul sistemului de fisiere pt a vizualiza vreo modificare
+
                 else : # mesaj confirmabil sau comanda care asteapta date de la server
                     response=self.match_response(request)
-
-                    #print("Raspuns de la server: \n", response)
                     self.logger.info('Server response : \n' + str(response))
-                    # se parseaza raspunsul
+                    self.analyze_response(cmd,response)
 
 
 
-                self.running=False
+
         except ConnectionResetError as err:
             self.logger.exception(err)
 
+
+
+
+    def analyze_response(self,cmd:Command,response:Message):
+        if response.m_type==TYPE_RST:
+            self.message_queue.put(cmd)
+            return
+
+        if response.m_class==CLASS_SUCCESS:
+            data_from_server=json_decoder.decode(response.payload)
+            if "status" in data_from_server:
+                self.controller.show_message(data_from_server["status"])
+            cmd.parse_response(data_from_server)
+        elif response.m_class==CLASS_CLIENT_ERROR :
+            if response.m_code==C_ERROR_FORBIDDEN:
+                self.controller.show_message('Missing file permissions for target object')
+            elif response.m_code==C_ERROR_NOT_FOUND:
+                self.controller.show_message('Invalid path')
+        elif response.m_class==CLASS_SERVER_ERROR :
+            self.controller.show_message('Server error')
 
 
 
@@ -129,7 +153,8 @@ class CoAPclient():
 
 
                     if response.m_id != request.m_id: # raspuns inainte de ack (response.token == request.token)
-                        self.acknowledge_for_server(response)
+                        if response.m_type==TYPE_CON_MSG:
+                            self.acknowledge_for_server(response)
                         return response
                     else: #response.m_id == request.m_id: ->  primesc intai ack
 
@@ -139,16 +164,12 @@ class CoAPclient():
 
                         # daca e RESET il returnez, urmand ca interpretarea raspunsului sa fie facuta in fct separata
                         if response.m_type==TYPE_RST:
+                            self.logger.info('RESET message received')
                             return response
                         elif response.m_type!=TYPE_ACK:
-                            print("Error")
-
-                            # exceptie???---------------------------------------------------------------------------------------------
-
-                        # daca nu e RESET sau eroare => ACK
-                        #print("Request acknowledged")
-                        self.logger.info('Request acknowledged')
-
+                            self.logger.info('error: ACK expected ')
+                        else:
+                            self.logger.info('Request acknowledged')
 
 
 
@@ -161,7 +182,9 @@ class CoAPclient():
                                 response=self.receive()
 
                             # send acknowledge to server for con response
-                            self.acknowledge_for_server(response)
+                            if response.m_type==TYPE_CON_MSG:
+                                self.acknowledge_for_server(response)
+
                             return response
                         else:
                             return response

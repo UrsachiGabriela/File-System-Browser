@@ -10,6 +10,7 @@ if __name__=='__main__':
 
      app=Application()
      app.connect_to_server(10002,'127.0.0.1')
+     app.mainloop()
 
 
      #

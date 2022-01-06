@@ -30,7 +30,7 @@ class File(TreeItem):
 
 
 class Directory(TreeItem):
-    def __init__(self, name: str):
+    def __init__(self, name: str): # name = pathName
         super().__init__(name)
         self.items=[]
         self.type='directory'

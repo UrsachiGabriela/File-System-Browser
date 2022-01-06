@@ -31,7 +31,7 @@ class Command(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def parse_response(self):
+    def parse_response(self, data_from_server):
         pass
 
 
@@ -65,8 +65,9 @@ class detailsCommand(Command): #list files properties
 
         return json.dumps(p)
 
-    def parse_response(self):
-        pass
+    def parse_response(self, data_from_server):
+        if self.call_fct:
+            self.call_fct(data_from_server)
 
 
 
@@ -119,8 +120,10 @@ class createCommand(Command):
 
         return json.dumps(p)
 
-    def parse_response(self):
-        pass
+    def parse_response(self, data_from_server):
+        data_to_parse=data_from_server['status']
+        if self.call_fct:
+            self.call_fct(data_to_parse)
 
 
 class openCommand(Command): #response is the content of file
@@ -149,8 +152,11 @@ class openCommand(Command): #response is the content of file
 
         return json.dumps(p)
 
-    def parse_response(self):
-        pass
+    def parse_response(self, data_from_server):
+        data_to_parse=data_from_server["response"]
+        print(data_to_parse)
+        if self.call_fct:
+            self.call_fct(data_to_parse)
 
 
 class saveCommand(Command):
@@ -181,8 +187,9 @@ class saveCommand(Command):
 
         return json.dumps(p)
 
-    def parse_response(self):
-        pass
+    def parse_response(self, data_from_server):
+        if self.call_fct:
+            self.call_fct()
 
 
 class deleteCommand(Command):
@@ -211,8 +218,9 @@ class deleteCommand(Command):
 
         return json.dumps(p)
 
-    def parse_response(self):
-        pass
+    def parse_response(self, data_from_server):
+        if self.call_fct:
+            self.call_fct()
 
 
 class renameCommand(Command):
@@ -243,8 +251,9 @@ class renameCommand(Command):
 
         return json.dumps(p)
 
-    def parse_response(self):
-        pass
+    def parse_response(self, data_from_server):
+        if self.call_fct:
+            self.call_fct()
 
 
 class moveCommand(Command):
@@ -275,8 +284,9 @@ class moveCommand(Command):
 
         return json.dumps(p)
 
-    def parse_response(self):
-        pass
+    def parse_response(self, data_from_server):
+        if self.call_fct:
+            self.call_fct()
 
 #
 # class cdCommand(Command):
@@ -322,14 +332,17 @@ class backCommand(Command):
 
         return json.dumps(p)
 
-    def parse_response(self):
-        pass
+    def parse_response(self, data_from_server):
+        data_to_parse=data_from_server["response"]
+        print(data_to_parse)
+        if self.call_fct:
+            self.call_fct(data_to_parse)
 
 
 class searchCommand(Command):
     def __init__(self, searchedPathName: str, targetName: str, call_fct: Callable=None):
         super().__init__(call_fct)
-        self.searchedPathName=searchedPathName
+        self.searchedPathName=searchedPathName #va fi mereu current_path
         self.targetName=targetName
         self.mType=TYPE_NON_CON_MSG
 
@@ -355,5 +368,13 @@ class searchCommand(Command):
 
         return json.dumps(p)
 
-    def parse_response(self):
-        pass
+    def parse_response(self, data_from_server):
+        results=data_from_server["results"]
+        result_paths=data_from_server["result_paths"]
+        data_to_parse=[]
+        for i in range(0,len(results)):
+            data_to_parse.append([results[i],result_paths[i]])
+
+        print(data_to_parse)
+        if self.call_fct:
+            self.call_fct(data_to_parse)

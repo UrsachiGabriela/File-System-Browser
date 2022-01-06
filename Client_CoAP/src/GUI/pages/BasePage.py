@@ -9,6 +9,8 @@ class BasePage(tk.Frame):
         self.controller=controller
         self.parent=parent
 
+
+
         self.init_title()
 
 
@@ -21,12 +23,12 @@ class BasePage(tk.Frame):
         title_frame.pack(side=tk.TOP,fill=tk.X)
 
         title_frame.grid_columnconfigure(0,weight=1)
-        tk.Label(master=title_frame,text='CoAP CLIENT',font=title_font,fg=title_color,bg=title_frame['bg']).grid(row=0, column=0, sticky='nesw')
+        tk.Label(master=title_frame,text='File System Browser',font=title_font,fg=title_color,bg=title_frame['bg']).grid(row=0, column=0, sticky='nesw')
 
 
 
     @abc.abstractmethod
-    def init_gui(self):
+    def init_gui(self,master):
         pass
 
 
