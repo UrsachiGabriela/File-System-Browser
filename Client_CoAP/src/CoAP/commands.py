@@ -10,19 +10,19 @@ class Command(metaclass=abc.ABCMeta):
     def __init__(self,call_fct:Callable=None):
         self.call_fct=call_fct
 
-    @staticmethod
+
     @abc.abstractmethod
-    def get_class():
+    def get_class(self):
         pass
 
-    @staticmethod
+
     @abc.abstractmethod
-    def get_code():
+    def get_code(self):
         pass
 
-    @staticmethod
+
     @abc.abstractmethod
-    def response_needed():
+    def response_needed(self):
         pass
 
 
@@ -44,16 +44,15 @@ class detailsCommand(Command): #list files properties
 
 
 
-    @staticmethod
-    def get_class():
+    def get_class(self):
         return CLASS_METHOD
 
-    @staticmethod
-    def get_code():
+
+    def get_code(self):
         return CODE_GET
 
-    @staticmethod
-    def response_needed():
+
+    def response_needed(self):
         return True
 
 
@@ -71,24 +70,6 @@ class detailsCommand(Command): #list files properties
 
 
 
-# class createDirCommand(Command):
-#
-#     def __init__(self,dirName:str):
-#         self.dirName=dirName
-#
-#     @staticmethod
-#     def getClass():
-#         return 0
-#
-#     @staticmethod
-#     def getCode():
-#         return constants.Method.POST
-#
-#     @staticmethod
-#     def responseNeeded():
-#         return False
-
-
 
 class createCommand(Command):
 
@@ -98,16 +79,16 @@ class createCommand(Command):
         self.type=type #file or folder
         self.mType=TYPE_NON_CON_MSG
 
-    @staticmethod
-    def get_class():
+
+    def get_class(self):
         return CLASS_METHOD
 
-    @staticmethod
-    def get_code():
+
+    def get_code(self):
         return CODE_POST
 
-    @staticmethod
-    def response_needed():
+
+    def response_needed(self):
         return False
 
 
@@ -121,9 +102,12 @@ class createCommand(Command):
         return json.dumps(p)
 
     def parse_response(self, data_from_server):
-        data_to_parse=data_from_server['status']
-        if self.call_fct:
-            self.call_fct(data_to_parse)
+        if data_from_server != '':
+            status=data_from_server['status']
+            if status != 'exists' and status != 'existed':
+                if self.call_fct:
+                    self.call_fct()
+
 
 
 class openCommand(Command): #response is the content of file
@@ -132,16 +116,16 @@ class openCommand(Command): #response is the content of file
         self.openedPathName=openedPathName
         self.mType=TYPE_NON_CON_MSG
 
-    @staticmethod
-    def get_class():
+
+    def get_class(self):
         return CLASS_METHOD
 
-    @staticmethod
-    def get_code():
+
+    def get_code(self):
         return CODE_GET
 
-    @staticmethod
-    def response_needed():
+
+    def response_needed(self):
         return True
 
     def payload(self):
@@ -154,9 +138,9 @@ class openCommand(Command): #response is the content of file
 
     def parse_response(self, data_from_server):
         data_to_parse=data_from_server["response"]
-        print(data_to_parse)
+        item_type=data_from_server["type"]
         if self.call_fct:
-            self.call_fct(data_to_parse)
+            self.call_fct(data_to_parse,item_type)
 
 
 class saveCommand(Command):
@@ -164,18 +148,18 @@ class saveCommand(Command):
         super().__init__(call_fct)
         self.savedPathName=savedPathName
         self.savedContent=savedContent
-        self.mType=TYPE_NON_CON_MSG
+        self.mType=TYPE_CON_MSG
 
-    @staticmethod
-    def get_class():
+
+    def get_class(self):
         return CLASS_METHOD
 
-    @staticmethod
-    def get_code():
+
+    def get_code(self):
         return CODE_POST
 
-    @staticmethod
-    def response_needed():
+
+    def response_needed(self):
         return False
 
     def payload(self):
@@ -198,16 +182,16 @@ class deleteCommand(Command):
         self.deletedPathName=deletedPathName
         self.mType=TYPE_NON_CON_MSG
 
-    @staticmethod
-    def get_class():
+
+    def get_class(self):
         return CLASS_METHOD
 
-    @staticmethod
-    def get_code():
+
+    def get_code(self):
         return CODE_POST
 
-    @staticmethod
-    def response_needed():
+
+    def response_needed(self):
         return False
 
     def payload(self):
@@ -230,16 +214,16 @@ class renameCommand(Command):
         self.name=name
         self.mType=TYPE_NON_CON_MSG
 
-    @staticmethod
-    def get_class():
+
+    def get_class(self):
         return CLASS_METHOD
 
-    @staticmethod
-    def get_code():
+
+    def get_code(self):
         return CODE_POST
 
-    @staticmethod
-    def response_needed():
+
+    def response_needed(self):
         return False
 
     def payload(self):
@@ -263,23 +247,23 @@ class moveCommand(Command):
         self.destinationPath=destinationPath
         self.mType=TYPE_NON_CON_MSG
 
-    @staticmethod
-    def get_class():
+
+    def get_class(self):
         return CLASS_METHOD
 
-    @staticmethod
-    def get_code():
+
+    def get_code(self):
         return CODE_POST
 
-    @staticmethod
-    def response_needed():
+
+    def response_needed(self):
         return False
 
     def payload(self):
         p={
             "cmd":"move",
-            "sourcePath":self.sourcePath,
-            "destinationPath":self.destinationPath
+            "path":self.sourcePath,
+            "new_path":self.destinationPath
         }
 
         return json.dumps(p)
@@ -288,56 +272,38 @@ class moveCommand(Command):
         if self.call_fct:
             self.call_fct()
 
-#
-# class cdCommand(Command):
-#     def __init__(self,newPathName:str):
-#         self.newPathName=newPathName
-#
-#     @staticmethod
-#     def getClass():
-#         return 0
+# aceasta comanda va fi executata prin intermediul comenzii open
+# class backCommand(Command):
+#     def __init__(self, currentPath: str, call_fct: Callable=None):
+#         super().__init__(call_fct)
+#         self.currentPath=currentPath
+#         self.mType=TYPE_NON_CON_MSG
 #
 #     @staticmethod
-#     def getCode():
-#         return constants.Method.POST
+#     def get_class():
+#         return CLASS_METHOD
 #
 #     @staticmethod
-#     def responseNeeded():
+#     def get_code():
+#         return CODE_POST
+#
+#     @staticmethod
+#     def response_needed():
 #         return True
-
-class backCommand(Command):
-    def __init__(self, currentPath: str, call_fct: Callable=None):
-        super().__init__(call_fct)
-        self.currentPath=currentPath
-        self.mType=TYPE_NON_CON_MSG
-
-    @staticmethod
-    def get_class():
-        return CLASS_METHOD
-
-    @staticmethod
-    def get_code():
-        return CODE_POST
-
-    @staticmethod
-    def response_needed():
-        return True
-
-
-    def payload(self):
-        p={
-            "cmd":"back",
-            "path":self.currentPath
-        }
-
-        return json.dumps(p)
-
-    def parse_response(self, data_from_server):
-        data_to_parse=data_from_server["response"]
-        print(data_to_parse)
-        if self.call_fct:
-            self.call_fct(data_to_parse)
-
+#
+#
+#     def payload(self):
+#         p={
+#             "cmd":"back",
+#             "path":self.currentPath
+#         }
+#
+#         return json.dumps(p)
+#
+#     def parse_response(self, data_from_server):
+#         if self.call_fct:
+#             self.call_fct()
+#
 
 class searchCommand(Command):
     def __init__(self, searchedPathName: str, targetName: str, call_fct: Callable=None):
@@ -346,16 +312,16 @@ class searchCommand(Command):
         self.targetName=targetName
         self.mType=TYPE_NON_CON_MSG
 
-    @staticmethod
-    def get_class():
+
+    def get_class(self):
         return CLASS_METHOD
 
-    @staticmethod
-    def get_code():
+
+    def get_code(self):
         return CODE_SEARCH
 
-    @staticmethod
-    def response_needed():
+
+    def response_needed(self):
         return True
 
     def payload(self):
@@ -370,11 +336,6 @@ class searchCommand(Command):
 
     def parse_response(self, data_from_server):
         results=data_from_server["results"]
-        result_paths=data_from_server["result_paths"]
-        data_to_parse=[]
-        for i in range(0,len(results)):
-            data_to_parse.append([results[i],result_paths[i]])
-
-        print(data_to_parse)
+        print(results)
         if self.call_fct:
-            self.call_fct(data_to_parse)
+            self.call_fct(results)

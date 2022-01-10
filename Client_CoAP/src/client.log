@@ -1,1664 +1,187 @@
-CoAP_client - 2022-01-06 18:53:13,880 - INFO - Connection started.
-CoAP_client - 2022-01-06 18:53:13,880 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 1 
-message_id:4287 
-token: b"uU='Q\x9eO" 
-payload: {"cmd": "open", "path": "newdirectory"} 
-
-CoAP_client - 2022-01-06 18:53:13,880 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 18:53:13,880 - INFO - Server response : 
-version:1 
- type:2 
- token_len:7 
- class:4 
- code: 4 
-message_id:4287 
-token: b"uU='Q\x9eO" 
-payload: The given path does not exist 
-
-CoAP_client - 2022-01-06 18:55:47,583 - INFO - Connection started.
-CoAP_client - 2022-01-06 18:55:47,583 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 1 
-message_id:32827 
-token: b'\xb2,R%\xd0\xd9\xa4' 
-payload: {"cmd": "open", "path": "newdirectory"} 
-
-CoAP_client - 2022-01-06 18:55:47,583 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 18:55:47,583 - INFO - Server response : 
-version:1 
- type:2 
- token_len:7 
- class:4 
- code: 4 
-message_id:32827 
-token: b'\xb2,R%\xd0\xd9\xa4' 
-payload: The given path does not exist 
-
-CoAP_client - 2022-01-06 18:55:57,862 - INFO - Connection started.
-CoAP_client - 2022-01-06 18:55:57,862 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:8 
- class:0 
- code: 1 
-message_id:57726 
-token: b':\xeb?\x8d\x89\xba, ' 
-payload: {"cmd": "open", "path": "newdirectory"} 
-
-CoAP_client - 2022-01-06 18:55:57,872 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 18:55:57,872 - INFO - Server response : 
-version:1 
- type:2 
- token_len:8 
- class:4 
- code: 4 
-message_id:57726 
-token: b':\xeb?\x8d\x89\xba, ' 
-payload: The given path does not exist 
-
-CoAP_client - 2022-01-06 18:56:38,610 - INFO - Connection started.
-CoAP_client - 2022-01-06 18:56:38,610 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 1 
-message_id:12988 
-token: b'|\n\xe5' 
-payload: {"cmd": "open", "path": "newdirectory"} 
-
-CoAP_client - 2022-01-06 18:56:38,610 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 18:56:38,610 - INFO - Server response : 
-version:1 
- type:2 
- token_len:3 
- class:4 
- code: 4 
-message_id:12988 
-token: b'|\n\xe5' 
-payload: The given path does not exist 
-
-CoAP_client - 2022-01-06 18:57:39,015 - INFO - Connection started.
-CoAP_client - 2022-01-06 18:57:39,015 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:1 
- class:0 
- code: 1 
-message_id:56465 
-token: b'\xdd' 
-payload: {"cmd": "open", "path": "newdirectory"} 
-
-CoAP_client - 2022-01-06 18:57:39,025 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 18:57:39,025 - INFO - Server response : 
-version:1 
- type:2 
- token_len:1 
- class:4 
- code: 4 
-message_id:56465 
-token: b'\xdd' 
-payload: The given path does not exist 
-
-CoAP_client - 2022-01-06 18:59:31,579 - INFO - Connection started.
-CoAP_client - 2022-01-06 18:59:31,589 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 1 
-message_id:23388 
-token: b'\x16S\x1c\xc3' 
-payload: {"cmd": "open", "path": "/newdirectory"} 
-
-CoAP_client - 2022-01-06 18:59:31,589 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 18:59:31,589 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:4 
- code: 4 
-message_id:23388 
-token: b'\x16S\x1c\xc3' 
-payload: The given path does not exist 
-
-CoAP_client - 2022-01-06 19:00:46,823 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:00:46,823 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 1 
-message_id:34678 
-token: b'U\xebhc' 
-payload: {"cmd": "open", "path": "newdirectory"} 
-
-CoAP_client - 2022-01-06 19:00:46,823 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:00:46,833 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 5 
-message_id:34678 
-token: b'U\xebhc' 
-payload: {"client_cmd": "open", "response": ["dir1", "dir2", "doc1.txt", "img.bmp", "project.pptx"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 19:01:31,731 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:01:31,731 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 1 
-message_id:20808 
-token: b'I`\xac' 
-payload: {"cmd": "open", "path": "dir1"} 
-
-CoAP_client - 2022-01-06 19:01:31,741 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:01:31,741 - INFO - Server response : 
-version:1 
- type:2 
- token_len:3 
- class:4 
- code: 4 
-message_id:20808 
-token: b'I`\xac' 
-payload: The given path does not exist 
-
-CoAP_client - 2022-01-06 19:01:40,120 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:01:40,120 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 1 
-message_id:37515 
-token: b'\xd8\x19@\xf5' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 19:01:40,130 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:01:40,130 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 5 
-message_id:37515 
-token: b'\xd8\x19@\xf5' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 19:04:33,384 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:04:33,384 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 1 
-message_id:34421 
-token: b'\xb0\x83\xdd9\x11\x14\x83' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 19:04:33,384 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 19:46:45,463 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:46:45,463 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 1 
-message_id:62948 
-token: b'\x9c."FQ.' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 19:46:45,463 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:46:45,463 - INFO - Server response : 
-version:1 
- type:2 
- token_len:6 
- class:2 
- code: 5 
-message_id:62948 
-token: b'\x9c."FQ.' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 19:47:45,652 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:47:45,652 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 1 
-message_id:33695 
-token: b'k"\xf3o-\x8f|' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 19:47:45,652 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:47:45,652 - INFO - Server response : 
-version:1 
- type:2 
- token_len:7 
- class:2 
- code: 5 
-message_id:33695 
-token: b'k"\xf3o-\x8f|' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 19:48:50,409 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:48:50,409 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 1 
-message_id:27747 
-token: b'\x8f\xa7\xfc\t' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 19:48:50,409 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:48:50,409 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 5 
-message_id:27747 
-token: b'\x8f\xa7\xfc\t' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 19:54:22,971 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:54:22,971 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:2 
- class:0 
- code: 1 
-message_id:41 
-token: b'm\xb8' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 19:54:22,971 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:54:22,971 - INFO - Server response : 
-version:1 
- type:2 
- token_len:2 
- class:2 
- code: 5 
-message_id:41 
-token: b'm\xb8' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 19:55:47,236 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:55:47,236 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 1 
-message_id:26829 
-token: b' d[' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 19:55:47,236 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:55:47,236 - INFO - Server response : 
-version:1 
- type:2 
- token_len:3 
- class:2 
- code: 5 
-message_id:26829 
-token: b' d[' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 19:56:48,852 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:56:48,852 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:2 
- class:0 
- code: 1 
-message_id:22686 
-token: b"'K" 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 19:56:48,862 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:56:48,862 - INFO - Server response : 
-version:1 
- type:2 
- token_len:2 
- class:2 
- code: 5 
-message_id:22686 
-token: b"'K" 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 19:57:24,621 - INFO - Connection started.
-CoAP_client - 2022-01-06 19:57:24,621 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 1 
-message_id:52639 
-token: b'\xae\x03\xd9R\xc6\xe6' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 19:57:24,631 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 19:57:24,631 - INFO - Server response : 
-version:1 
- type:2 
- token_len:6 
- class:2 
- code: 5 
-message_id:52639 
-token: b'\xae\x03\xd9R\xc6\xe6' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:09:03,464 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:09:03,464 - INFO - Request is sent to server : 
+CoAP_client - 2022-01-10 23:04:30,388 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:07:18,490 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:09:42,094 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:10:25,571 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:10:31,614 - INFO - Request is sent to server : 
 version:1 
  type:0 
  token_len:5 
  class:0 
  code: 1 
-message_id:10102 
-token: b'\x97\x8a4\x83\xfc' 
+message_id:47028 
+token: b'G\rE\x8e\xcc' 
 payload: {"cmd": "open", "path": "/"} 
 
-CoAP_client - 2022-01-06 20:09:03,464 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:09:03,474 - INFO - Server response : 
-version:1 
- type:2 
- token_len:5 
- class:2 
- code: 5 
-message_id:10102 
-token: b'\x97\x8a4\x83\xfc' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:09:50,582 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:09:50,582 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 1 
-message_id:4130 
-token: b'L\xc1\xf3' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:09:50,582 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:09:50,582 - INFO - Server response : 
-version:1 
- type:2 
- token_len:3 
- class:2 
- code: 5 
-message_id:4130 
-token: b'L\xc1\xf3' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:10:21,151 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:10:21,151 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 1 
-message_id:28139 
-token: b'x\x8aA\xbeF\x0bY' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:10:21,151 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:10:21,151 - INFO - Server response : 
-version:1 
- type:2 
- token_len:7 
- class:2 
- code: 5 
-message_id:28139 
-token: b'x\x8aA\xbeF\x0bY' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:10:41,180 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:10:41,180 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 1 
-message_id:8295 
-token: b'b\xbbGS' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:10:41,190 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:10:41,190 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 5 
-message_id:8295 
-token: b'b\xbbGS' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:10:55,639 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:10:55,639 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:5 
- class:0 
- code: 1 
-message_id:2807 
-token: b'\xf5\x831\xd4\xa6' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:10:55,639 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:10:55,639 - INFO - Server response : 
-version:1 
- type:2 
- token_len:5 
- class:2 
- code: 5 
-message_id:2807 
-token: b'\xf5\x831\xd4\xa6' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:14:22,414 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:14:22,414 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 1 
-message_id:23675 
-token: b'\x92\xb9kj' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:14:22,424 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:14:22,424 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 5 
-message_id:23675 
-token: b'\x92\xb9kj' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:14:56,245 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:14:56,245 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:1 
- class:0 
- code: 1 
-message_id:50933 
-token: b'\xa2' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:14:56,245 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:14:56,245 - INFO - Server response : 
-version:1 
- type:2 
- token_len:1 
- class:2 
- code: 5 
-message_id:50933 
-token: b'\xa2' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:15:07,246 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:15:07,246 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 1 
-message_id:28965 
-token: b'\xc7\xfd\x9c' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:15:07,246 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:15:07,246 - INFO - Server response : 
-version:1 
- type:2 
- token_len:3 
- class:2 
- code: 5 
-message_id:28965 
-token: b'\xc7\xfd\x9c' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:15:59,791 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:15:59,791 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 1 
-message_id:57032 
-token: b"\t\x80'" 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:15:59,791 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:15:59,791 - INFO - Server response : 
-version:1 
- type:2 
- token_len:3 
- class:2 
- code: 5 
-message_id:57032 
-token: b"\t\x80'" 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:16:09,420 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:16:09,420 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:8 
- class:0 
- code: 1 
-message_id:31741 
-token: b'\x1de\x8ak\xe1.|\x06' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:16:09,420 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:16:09,430 - INFO - Server response : 
-version:1 
- type:2 
- token_len:8 
- class:2 
- code: 5 
-message_id:31741 
-token: b'\x1de\x8ak\xe1.|\x06' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:17:39,838 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:17:39,838 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:5 
- class:0 
- code: 1 
-message_id:4678 
-token: b'\xd0\xbf-\xaf^' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:17:39,838 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:17:39,838 - INFO - Server response : 
-version:1 
- type:2 
- token_len:5 
- class:2 
- code: 5 
-message_id:4678 
-token: b'\xd0\xbf-\xaf^' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:21:06,679 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:21:06,679 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 1 
-message_id:51631 
-token: b'\x04\xa3\x9bk' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:21:06,679 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:21:30,968 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:21:30,968 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:8 
- class:0 
- code: 1 
-message_id:13311 
-token: b'\xaeu\x1b\x1d1S\x89\x8a' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:21:30,968 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:21:38,972 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:21:38,972 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:2 
- class:0 
- code: 1 
-message_id:4861 
-token: b'9L' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:21:38,972 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:22:32,782 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:22:32,792 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 1 
-message_id:64064 
-token: b'0T<' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:22:32,792 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:22:52,429 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:22:52,429 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 1 
-message_id:20197 
-token: b'\x04\xa8]\xb7}\xa4>' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:22:52,429 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:24:59,563 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:24:59,563 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:8 
- class:0 
- code: 1 
-message_id:53317 
-token: b'\x87(\xab\xd1\xd5\xc0c]' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:24:59,563 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:27:59,329 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:27:59,329 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 1 
-message_id:55673 
-token: b'i\xc5\xf3\x94Gb\xe2' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:27:59,329 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:28:09,318 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:28:09,328 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 1 
-message_id:18019 
-token: b'\x19\x1d5' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:28:09,328 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:29:17,858 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:29:17,858 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:5 
- class:0 
- code: 1 
-message_id:3293 
-token: b'\xa5\xd6\xdf\x83g' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:29:17,858 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:29:53,974 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:29:53,974 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 1 
-message_id:51282 
-token: b'\xc9p$\x7f\x8efP' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:29:53,974 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:30:44,432 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:30:44,432 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:5 
- class:0 
- code: 1 
-message_id:2839 
-token: b'\x13\x94\x1e\x06\xa5' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:30:44,432 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:33:25,648 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:33:25,648 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:1 
- class:0 
- code: 1 
-message_id:55650 
-token: b'\x98' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:33:25,648 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:33:51,037 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:33:51,037 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:5 
- class:0 
- code: 1 
-message_id:38914 
-token: b'\xfc\xf8\x86Y\x93' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:33:51,037 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:33:58,927 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:33:58,927 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 1 
-message_id:55440 
-token: b'<2Y\xf2&\xba\x88' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:33:58,927 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:35:04,919 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:35:04,919 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 1 
-message_id:41065 
-token: b';.\xc5\xb1<2' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:35:04,919 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:38:15,586 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:38:15,596 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 1 
-message_id:28288 
-token: b'\x87\x85o\x14I\xa1' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:38:15,596 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:38:53,593 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:38:53,593 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 1 
-message_id:23117 
-token: b'\x11KK\xfd\x9f%' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:38:53,593 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:42:37,272 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:42:37,272 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 1 
-message_id:49266 
-token: b'\xda\xd6\xae' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:42:37,272 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:52:48,098 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:52:48,098 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 1 
-message_id:37565 
-token: b'W\xe5\xb3\xb7\x13}' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:52:48,098 - ERROR - [WinError 10054] An existing connection was forcibly closed by the remote host
-Traceback (most recent call last):
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 67, in run
-    response=self.match_response(request)
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 145, in match_response
-    response=self.receive()
-  File "D:\__FACULTATE\AN_3\Sem1\__PROIECT_RC\RC_P\Client_CoAP\src\CoAP\CoAPclient.py", line 132, in receive
-    fromServer,addr=self.mySocket.recvfrom(1024)
-ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
-CoAP_client - 2022-01-06 20:58:26,434 - INFO - Connection started.
-CoAP_client - 2022-01-06 20:58:26,434 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 1 
-message_id:33472 
-token: b'(\xf7w\xc0\x19<' 
-payload: {"cmd": "open", "path": "/"} 
-
-CoAP_client - 2022-01-06 20:58:26,434 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 20:58:26,434 - INFO - Server response : 
-version:1 
- type:2 
- token_len:6 
- class:2 
- code: 5 
-message_id:33472 
-token: b'(\xf7w\xc0\x19<' 
-payload: {"client_cmd": "open", "response": ["newdirectory"], "type": "folder"} 
-
-CoAP_client - 2022-01-06 20:59:38,905 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:00:07,949 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 2 
-message_id:39166 
-token: b'\xf7\xa4\xf2\x8b"\xab\x85' 
-payload: {"cmd": "create", "path": "\\sfwq", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:00:07,949 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:00:07,949 - INFO - Server response : 
-version:1 
- type:2 
- token_len:7 
- class:2 
- code: 1 
-message_id:39166 
-token: b'\xf7\xa4\xf2\x8b"\xab\x85' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:02:10,362 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:04:21,902 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:04:28,411 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 2 
-message_id:64079 
-token: b'\t\xc9\xbb\xc2' 
-payload: {"cmd": "create", "path": "\\e.txt", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:04:28,411 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:04:28,411 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 1 
-message_id:64079 
-token: b'\t\xc9\xbb\xc2' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:05:59,189 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:06:01,629 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 2 
-message_id:4556 
-token: b'\x1fy\xc0\xaf\xf5s' 
-payload: {"cmd": "create", "path": "\\sds", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:06:01,629 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:06:01,629 - INFO - Server response : 
-version:1 
- type:2 
- token_len:6 
- class:2 
- code: 1 
-message_id:4556 
-token: b'\x1fy\xc0\xaf\xf5s' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:07:39,911 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:07:42,761 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:5 
- class:0 
- code: 2 
-message_id:23814 
-token: b'\xd3?\xfdeY' 
-payload: {"cmd": "create", "path": "\\adfdw", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:07:42,761 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:07:42,761 - INFO - Server response : 
-version:1 
- type:2 
- token_len:5 
- class:2 
- code: 1 
-message_id:23814 
-token: b'\xd3?\xfdeY' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:09:21,758 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:09:30,064 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:2 
- class:0 
- code: 2 
-message_id:10931 
-token: b'\xa6]' 
-payload: {"cmd": "create", "path": "\\tfj", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:09:30,064 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:09:30,064 - INFO - Server response : 
-version:1 
- type:2 
- token_len:2 
- class:2 
- code: 1 
-message_id:10931 
-token: b'\xa6]' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:10:04,123 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:10:13,321 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 2 
-message_id:28141 
-token: b'\xdd\x91\xe1\xea~\xf5\n' 
-payload: {"cmd": "create", "path": "\\yf", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:10:13,321 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:10:13,321 - INFO - Server response : 
-version:1 
- type:2 
- token_len:7 
- class:2 
- code: 1 
-message_id:28141 
-token: b'\xdd\x91\xe1\xea~\xf5\n' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:13:36,124 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:13:40,732 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 2 
-message_id:12551 
-token: b'\xa6r\x04' 
-payload: {"cmd": "create", "path": "\\sye", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:13:40,732 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:13:40,732 - INFO - Server response : 
-version:1 
- type:2 
- token_len:3 
- class:2 
- code: 1 
-message_id:12551 
-token: b'\xa6r\x04' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:18:58,167 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:19:02,965 - INFO - Request is sent to server : 
-version:1 
- type:1 
- token_len:8 
- class:0 
- code: 2 
-message_id:8155 
-token: b'\xe7\xd9\x0e\xa4/\x89\x17\xbe' 
-payload: {"cmd": "create", "path": "\\e", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:19:23,694 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:19:26,759 - INFO - Request is sent to server : 
-version:1 
- type:1 
- token_len:7 
- class:0 
- code: 2 
-message_id:30545 
-token: b'\x81\x0b6+\xea\x8b$' 
-payload: {"cmd": "create", "path": "\\weywr", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:21:21,158 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:21:53,345 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:22:09,897 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 2 
-message_id:51238 
-token: b'\xff8\x12\x03' 
-payload: {"cmd": "create", "path": "\\dir1", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:22:09,897 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:22:09,907 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 1 
-message_id:51238 
-token: b'\xff8\x12\x03' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:25:10,736 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:25:16,596 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:2 
- class:0 
- code: 2 
-message_id:6675 
-token: b'\xeb]' 
-payload: {"cmd": "create", "path": "\\file.txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:25:16,606 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:25:16,606 - INFO - Server response : 
-version:1 
- type:2 
- token_len:2 
- class:2 
- code: 1 
-message_id:6675 
-token: b'\xeb]' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:28:14,718 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:28:21,728 - INFO - Request is sent to server : 
+CoAP_client - 2022-01-10 23:14:03,211 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:26:16,234 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:26:46,452 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:28:14,138 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:29:04,762 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:29:07,035 - INFO - Request is sent to server : 
 version:1 
  type:1 
  token_len:3 
  class:0 
- code: 2 
-message_id:4660 
-token: b'p%\xdb' 
-payload: {"cmd": "create", "path": "\\f1.txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:30:11,593 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:30:18,821 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 2 
-message_id:38295 
-token: b'\x7f\xf1\xb9t' 
-payload: {"cmd": "create", "path": "\\terog", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:30:18,821 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:30:18,821 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
  code: 1 
-message_id:38295 
-token: b'\x7f\xf1\xb9t' 
-payload: {"client_cmd": "create", "status": "created"} 
+message_id:46364 
+token: b'x\x90\xfa' 
+payload: {"cmd": "open", "path": "/"} 
 
-CoAP_client - 2022-01-06 21:30:43,803 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:30:55,879 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:31:03,861 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:5 
- class:0 
- code: 2 
-message_id:19690 
-token: b'r\xf8K\x95\xf9' 
-payload: {"cmd": "create", "path": "\\fisier1.txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:31:03,871 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:31:03,871 - INFO - Server response : 
-version:1 
- type:2 
- token_len:5 
- class:2 
- code: 1 
-message_id:19690 
-token: b'r\xf8K\x95\xf9' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:31:08,590 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:8 
- class:0 
- code: 2 
-message_id:27304 
-token: b'\xa1\xa0\x08\xc3-u\xa8\x8d' 
-payload: {"cmd": "create", "path": "\\fisier1.txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:31:08,590 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:31:08,590 - INFO - Server response : 
-version:1 
- type:2 
- token_len:8 
- class:2 
- code: 1 
-message_id:27304 
-token: b'\xa1\xa0\x08\xc3-u\xa8\x8d' 
-payload: {"client_cmd": "create", "status": "exists"} 
-
-CoAP_client - 2022-01-06 21:31:19,895 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 2 
-message_id:42826 
-token: b'\xe8,\n' 
-payload: {"cmd": "create", "path": "\\fisier1.txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:31:19,905 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:31:19,905 - INFO - Server response : 
-version:1 
- type:2 
- token_len:3 
- class:2 
- code: 1 
-message_id:42826 
-token: b'\xe8,\n' 
-payload: {"client_cmd": "create", "status": "exists"} 
-
-CoAP_client - 2022-01-06 21:31:28,633 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 2 
-message_id:27860 
-token: b'\xbb\x05\xb2\xbf\x08\xb9\x9c' 
-payload: {"cmd": "create", "path": "\\fisier2txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:31:28,642 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:31:28,642 - INFO - Server response : 
-version:1 
- type:2 
- token_len:7 
- class:2 
- code: 1 
-message_id:27860 
-token: b'\xbb\x05\xb2\xbf\x08\xb9\x9c' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:32:29,862 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:32:37,027 - INFO - Request is sent to server : 
+CoAP_client - 2022-01-10 23:29:07,035 - INFO - Server response : 
 version:1 
  type:1 
+ token_len:3 
+ class:2 
+ code: 5 
+message_id:46364 
+token: b'x\x90\xfa' 
+payload: {"client_cmd": "open", "response": ["file1.doc", "file5", "newdirectory"], "type": "folder"} 
+
+CoAP_client - 2022-01-10 23:29:09,015 - INFO - Request is sent to server : 
+version:1 
+ type:1 
+ token_len:3 
+ class:0 
+ code: 1 
+message_id:22204 
+token: b'*\xd4O' 
+payload: {"cmd": "open", "path": "/"} 
+
+CoAP_client - 2022-01-10 23:29:09,015 - INFO - Server response : 
+version:1 
+ type:1 
+ token_len:3 
+ class:2 
+ code: 5 
+message_id:22204 
+token: b'*\xd4O' 
+payload: {"client_cmd": "open", "response": ["file1.doc", "file5", "newdirectory"], "type": "folder"} 
+
+CoAP_client - 2022-01-10 23:29:09,535 - INFO - Request is sent to server : 
+version:1 
+ type:1 
+ token_len:2 
+ class:0 
+ code: 1 
+message_id:46765 
+token: b'\x9d\xd0' 
+payload: {"cmd": "open", "path": "/"} 
+
+CoAP_client - 2022-01-10 23:29:09,535 - INFO - Server response : 
+version:1 
+ type:1 
+ token_len:2 
+ class:2 
+ code: 5 
+message_id:46765 
+token: b'\x9d\xd0' 
+payload: {"client_cmd": "open", "response": ["file1.doc", "file5", "newdirectory"], "type": "folder"} 
+
+CoAP_client - 2022-01-10 23:29:10,605 - INFO - Request is sent to server : 
+version:1 
+ type:1 
+ token_len:6 
+ class:0 
+ code: 1 
+message_id:53564 
+token: b'\x8di\xb7\xf6\xe2\xe2' 
+payload: {"cmd": "open", "path": "/"} 
+
+CoAP_client - 2022-01-10 23:29:10,605 - INFO - Server response : 
+version:1 
+ type:1 
+ token_len:6 
+ class:2 
+ code: 5 
+message_id:53564 
+token: b'\x8di\xb7\xf6\xe2\xe2' 
+payload: {"client_cmd": "open", "response": ["file1.doc", "file5", "newdirectory"], "type": "folder"} 
+
+CoAP_client - 2022-01-10 23:29:30,145 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:33:07,818 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:34:14,798 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:48:28,195 - INFO - Connection started.
+CoAP_client - 2022-01-10 23:48:31,996 - INFO - Request is sent to server : 
+version:1 
+ type:0 
+ token_len:4 
+ class:0 
+ code: 1 
+message_id:10579 
+token: b'H\x1c\x19z' 
+payload: {"cmd": "open", "path": "/"} 
+
+CoAP_client - 2022-01-10 23:48:31,996 - INFO - Request acknowledged
+CoAP_client - 2022-01-10 23:48:31,996 - INFO - Server response : 
+version:1 
+ type:2 
+ token_len:4 
+ class:2 
+ code: 5 
+message_id:10579 
+token: b'H\x1c\x19z' 
+payload: {"client_cmd": "open", "response": ["file1.doc", "file5", "newdirectory"], "type": "folder"} 
+
+CoAP_client - 2022-01-10 23:48:32,996 - INFO - Request is sent to server : 
+version:1 
+ type:0 
+ token_len:4 
+ class:0 
+ code: 1 
+message_id:36176 
+token: b'\x135\xbc\x85' 
+payload: {"cmd": "open", "path": "/"} 
+
+CoAP_client - 2022-01-10 23:48:32,996 - INFO - Request acknowledged
+CoAP_client - 2022-01-10 23:48:32,996 - INFO - Server response : 
+version:1 
+ type:2 
+ token_len:4 
+ class:2 
+ code: 5 
+message_id:36176 
+token: b'\x135\xbc\x85' 
+payload: {"client_cmd": "open", "response": ["file1.doc", "file5", "newdirectory"], "type": "folder"} 
+
+CoAP_client - 2022-01-10 23:48:42,403 - INFO - Request is sent to server : 
+version:1 
+ type:0 
  token_len:8 
  class:0 
- code: 2 
-message_id:29341 
-token: b'\x8e\xc7\xaa\xabhw\xee_' 
-payload: {"cmd": "create", "path": "\\dir1", "type": "folder"} 
+ code: 8 
+message_id:35420 
+token: b'\x9e\xdd\xb9\x1a\xd2Now' 
+payload: {"cmd": "search", "path": "/", "target_name_regex": "dir"} 
 
-CoAP_client - 2022-01-06 21:32:40,367 - INFO - Request is sent to server : 
+CoAP_client - 2022-01-10 23:48:42,403 - INFO - Request acknowledged
+CoAP_client - 2022-01-10 23:48:42,403 - INFO - Server response : 
+version:1 
+ type:2 
+ token_len:8 
+ class:0 
+ code: 8 
+message_id:35420 
+token: b'\x9e\xdd\xb9\x1a\xd2Now' 
+payload: {"client_cmd": "search", "path": "/", "results": [{"name": "newdirectory", "type": "folder", "path": "newdirectory"}, {"name": "dir1", "type": "folder", "path": "newdirectory/dir1"}, {"name": "dir2", "type": "folder", "path": "newdirectory/dir2"}]} 
+
+CoAP_client - 2022-01-10 23:48:54,492 - INFO - Request is sent to server : 
 version:1 
  type:0 
  token_len:1 
  class:0 
  code: 2 
-message_id:5134 
-token: b'\xf1' 
-payload: {"cmd": "create", "path": "\\dir1", "type": "folder"} 
+message_id:35969 
+token: b'\xd6' 
+payload: {"cmd": "move", "path": "/file5", "new_path": "/newdirectory"} 
 
-CoAP_client - 2022-01-06 21:32:40,367 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:32:40,367 - INFO - Server response : 
+CoAP_client - 2022-01-10 23:48:54,492 - INFO - Request acknowledged
+CoAP_client - 2022-01-10 23:48:54,492 - INFO - Server response : 
 version:1 
  type:2 
  token_len:1 
- class:2 
- code: 1 
-message_id:5134 
-token: b'\xf1' 
-payload: {"client_cmd": "create", "status": "existed"} 
-
-CoAP_client - 2022-01-06 21:32:44,150 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 2 
-message_id:30084 
-token: b'\xee\xf6\xa3\xf2\x1b\x9b\x89' 
-payload: {"cmd": "create", "path": "\\dir2", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:32:44,150 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:32:44,150 - INFO - Server response : 
-version:1 
- type:2 
- token_len:7 
- class:2 
- code: 1 
-message_id:30084 
-token: b'\xee\xf6\xa3\xf2\x1b\x9b\x89' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:32:59,251 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 2 
-message_id:32028 
-token: b'Rq\xab\x9b' 
-payload: {"cmd": "create", "path": "\\f1.txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:32:59,261 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:32:59,261 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 1 
-message_id:32028 
-token: b'Rq\xab\x9b' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:33:01,234 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:3 
- class:0 
- code: 2 
-message_id:57926 
-token: b'\xdcJ?' 
-payload: {"cmd": "create", "path": "\\f1.txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:33:01,234 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:33:01,234 - INFO - Server response : 
-version:1 
- type:2 
- token_len:3 
- class:2 
- code: 1 
-message_id:57926 
-token: b'\xdcJ?' 
-payload: {"client_cmd": "create", "status": "exists"} 
-
-CoAP_client - 2022-01-06 21:33:07,712 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 2 
-message_id:36055 
-token: b']\xcd\xe1\x16' 
-payload: {"cmd": "create", "path": "\\f2.txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:33:07,722 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:33:07,722 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 1 
-message_id:36055 
-token: b']\xcd\xe1\x16' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:33:12,013 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 2 
-message_id:30611 
-token: b'\xa2\xe0\xd4\xc3\x859' 
-payload: {"cmd": "create", "path": "\\dir2", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:33:12,013 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:33:12,013 - INFO - Server response : 
-version:1 
- type:2 
- token_len:6 
- class:2 
- code: 1 
-message_id:30611 
-token: b'\xa2\xe0\xd4\xc3\x859' 
-payload: {"client_cmd": "create", "status": "existed"} 
-
-CoAP_client - 2022-01-06 21:33:29,595 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:7 
- class:0 
- code: 2 
-message_id:6800 
-token: b'\x89\xe8\xce\x0e\xe9\x94\xcc' 
-payload: {"cmd": "create", "path": "\\f2.txt", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:33:29,595 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:33:29,595 - INFO - Server response : 
-version:1 
- type:2 
- token_len:7 
- class:2 
- code: 1 
-message_id:6800 
-token: b'\x89\xe8\xce\x0e\xe9\x94\xcc' 
-payload: {"client_cmd": "create", "status": "exists"} 
-
-CoAP_client - 2022-01-06 21:36:34,521 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:36:38,521 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 2 
-message_id:50663 
-token: b'9\xe8\xf9.' 
-payload: {"cmd": "create", "path": "\\dddd", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:36:38,521 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:36:38,521 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 1 
-message_id:50663 
-token: b'9\xe8\xf9.' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:36:41,457 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 2 
-message_id:39977 
-token: b"\xe1\xb2h'1\xd4" 
-payload: {"cmd": "create", "path": "\\dddd", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:36:41,457 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:36:41,457 - INFO - Server response : 
-version:1 
- type:2 
- token_len:6 
- class:2 
- code: 1 
-message_id:39977 
-token: b"\xe1\xb2h'1\xd4" 
-payload: {"client_cmd": "create", "status": "existed"} 
-
-CoAP_client - 2022-01-06 21:36:45,596 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 2 
-message_id:33010 
-token: b'\xf4\xc2\xc7E' 
-payload: {"cmd": "create", "path": "\\dddd", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:36:45,596 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:36:45,596 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 1 
-message_id:33010 
-token: b'\xf4\xc2\xc7E' 
-payload: {"client_cmd": "create", "status": "existed"} 
-
-CoAP_client - 2022-01-06 21:36:48,739 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:2 
- class:0 
- code: 2 
-message_id:31599 
-token: b'e\xf8' 
-payload: {"cmd": "create", "path": "\\wdw", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:36:48,739 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:36:48,739 - INFO - Server response : 
-version:1 
- type:2 
- token_len:2 
- class:2 
- code: 1 
-message_id:31599 
-token: b'e\xf8' 
-payload: {"client_cmd": "create", "status": "created"} 
-
-CoAP_client - 2022-01-06 21:36:50,579 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:6 
- class:0 
- code: 2 
-message_id:19572 
-token: b'\xb4\xceS\xab\xc3%' 
-payload: {"cmd": "create", "path": "\\wdw", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:36:50,584 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:36:50,584 - INFO - Server response : 
-version:1 
- type:2 
- token_len:6 
- class:2 
- code: 1 
-message_id:19572 
-token: b'\xb4\xceS\xab\xc3%' 
-payload: {"client_cmd": "create", "status": "exists"} 
-
-CoAP_client - 2022-01-06 21:36:53,443 - INFO - Request is sent to server : 
-version:1 
- type:0 
- token_len:4 
- class:0 
- code: 2 
-message_id:26075 
-token: b'_/\x8c\xa3' 
-payload: {"cmd": "create", "path": "\\wdw", "type": "file"} 
-
-CoAP_client - 2022-01-06 21:36:53,443 - INFO - Request acknowledged
-CoAP_client - 2022-01-06 21:36:53,443 - INFO - Server response : 
-version:1 
- type:2 
- token_len:4 
- class:2 
- code: 1 
-message_id:26075 
-token: b'_/\x8c\xa3' 
-payload: {"client_cmd": "create", "status": "exists"} 
-
-CoAP_client - 2022-01-06 21:37:04,255 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:37:29,151 - INFO - Request is sent to server : 
-version:1 
- type:1 
- token_len:3 
- class:0 
- code: 2 
-message_id:11037 
-token: b'W\x9ah' 
-payload: {"cmd": "create", "path": "\\rfweg", "type": "folder"} 
-
-CoAP_client - 2022-01-06 21:39:37,749 - INFO - Connection started.
-CoAP_client - 2022-01-06 21:39:41,319 - INFO - Request is sent to server : 
-version:1 
- type:1 
- token_len:4 
- class:0 
- code: 2 
-message_id:6762 
-token: b'\xec\xe1\x84\x00' 
-payload: {"cmd": "create", "path": "\\aaa", "type": "folder"} 
+ class:4 
+ code: 3 
+message_id:35969 
+token: b'\xd6' 
+payload: An object already exists at the destination path 
 

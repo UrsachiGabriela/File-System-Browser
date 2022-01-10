@@ -46,12 +46,11 @@ class CoAPclient():
 
     def run(self):
         try:
-            self.running=True
+
             self.logger.info('Connection started.')
             while(self.running):
                 # se asteapta pana cand se da o comanda din interfata, pentru a o trimite la server
                 cmd=self.controller.message_queue.get(block=True,timeout=None)
-                print('extrag comanda din coada')
                 request=self.create_request(cmd)
 
 
@@ -65,8 +64,9 @@ class CoAPclient():
 
                 else : # mesaj confirmabil sau comanda care asteapta date de la server
                     response=self.match_response(request)
-                    self.logger.info('Server response : \n' + str(response))
-                    self.analyze_response(cmd,response)
+                    if response:
+                        self.logger.info('Server response : \n' + str(response))
+                        self.analyze_response(cmd,response)
 
 
 
@@ -92,6 +92,8 @@ class CoAPclient():
                 self.controller.show_message('Missing file permissions for target object')
             elif response.m_code==C_ERROR_NOT_FOUND:
                 self.controller.show_message('Invalid path')
+            else:
+                self.controller.show_message('The path requested is invalid, or access has been denied by the server')
         elif response.m_class==CLASS_SERVER_ERROR :
             self.controller.show_message('Server error')
 

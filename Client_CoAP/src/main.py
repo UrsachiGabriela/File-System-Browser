@@ -2,15 +2,15 @@ import json
 import queue
 
 from src.CoAP.CoAPclient import CoAPclient, json_encoder
-from src.FileSystem.FS import File
 from src.GUI.application import Application
 
 if __name__=='__main__':
 
 
      app=Application()
-     app.connect_to_server(10002,'127.0.0.1')
+     #app.connect_to_server(10002,'127.0.0.1')
      app.mainloop()
+
 
 
      #

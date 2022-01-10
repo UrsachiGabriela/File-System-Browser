@@ -9,15 +9,13 @@ class BasePage(tk.Frame):
         self.controller=controller
         self.parent=parent
 
-
-
         self.init_title()
 
 
 
     def init_title(self):
         title_font=tkfont.Font(family='Helvetica',size=20,weight='bold')
-        title_color='dark blue'
+        title_color='black'
 
         title_frame=tk.Frame(master=self,bg=self.parent['bg'])
         title_frame.pack(side=tk.TOP,fill=tk.X)
@@ -33,14 +31,3 @@ class BasePage(tk.Frame):
 
 
 
-    def failure(self,text):
-        showinfo(
-            title='Information',
-            message=text
-        )
-
-    def succes(self, text):
-        showinfo(
-            title='Information',
-            message=text
-        )
