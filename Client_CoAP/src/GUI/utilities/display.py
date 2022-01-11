@@ -45,10 +45,8 @@ class DisplayFrame(tk.Frame):
 
 
     def sort_by(self, tree: ttk.Treeview, col, descending):
-        # Sort tree contents when a column is clicked on.
-        # grab values to sort
+
         data = [(tree.set(child, col), child) for child in tree.get_children('')]
-        # reorder data
         data.sort(reverse=descending)
         num = 'Even'
         for indx, item in enumerate(data):
@@ -69,7 +67,6 @@ class DisplayFrame(tk.Frame):
         else:
             pass
 
-        # switch the heading so that it will sort in the opposite direction
         tree.heading(col, command=lambda col=col: self.sort_by(tree, col, int(not descending)))
 
     def insert(self, *args, **kwargs):

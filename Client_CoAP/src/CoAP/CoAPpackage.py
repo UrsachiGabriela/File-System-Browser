@@ -18,6 +18,9 @@ class Message:
 
     @classmethod
     def decode(cls,data:bytes) -> 'Message': #extractFromBytes
+        """
+        https://en.wikipedia.org/wiki/Constrained_Application_Protocol
+        """
         version=(0xC0 & data[0])>>6
         m_type=(0x30 & data[0])>>4
         token_len=(0x0F & data[0])>>0
@@ -25,7 +28,7 @@ class Message:
         m_code=((data[1]>>0)&0x1F)
         m_id=(data[2]<<8)|(data[3])
 
-        #length 9-15 are reserved
+        #len 9-15 -> reserved
         if(token_len>=9 and token_len<=15):
             print("error")
 
@@ -40,7 +43,7 @@ class Message:
 
         return cls(m_type,token_len,m_class,m_code,m_id,payload,version,token)
 
-        #struct module -- pack/unpack pack('i i 4s',3,4,'trgtr')
+
 
     def to_bytes(self): #toBytes
         data=[]
@@ -56,10 +59,6 @@ class Message:
         data.append(self.m_id & 0xff)
 
         if(self.token_len > 0):
-
-            #aux=self.token.to_bytes(self.token_len,'big')
-            #aux=bytearray(aux)
-
             for i in range (0,self.token_len):
                 data.append(self.token[i])
 
@@ -70,11 +69,6 @@ class Message:
             payload=self.payload.encode('utf-8')
             for i in range(0,len(payload)):
                 data.append(payload[i])
-
-        #a = np.array(data)
-        #a.tobytes(order='F')
-
-
 
 
         return bytes(data)
@@ -93,8 +87,80 @@ class Message:
         display += "token: {} \n".format(self.token)
         display += "payload: {} \n".format(self.payload)
 
-
         return display
 
 
+    def get_code(self):
+        m=''
+        if self.m_class==CLASS_METHOD:
+            if self.m_code==0:
+                m='EMPTY'
+            elif self.m_code==1:
+                m='GET'
+            elif self.m_code==2:
+                m='POST'
+            elif self.m_code==8:
+                m='SEARCH'
+        elif self.m_class==CLASS_SUCCESS:
+            if self.m_code==1:
+                m='CREATED'
+            elif self.m_code==2:
+                m='DELETED'
+            elif self.m_code==3:
+                m='VALID'
+            elif self.m_code==4:
+                m='CHANGED'
+            elif self.m_code==5:
+                m='CONTENT'
+        elif self.m_class==CLASS_CLIENT_ERROR:
+            if self.m_code==0:
+                m='BAD_REQUEST'
+            elif self.m_code==1:
+                m='UNAUTHORIZED'
+            elif self.m_code==2:
+                m='BAD_OPTION'
+            elif self.m_code==3:
+                m='FORBIDDEN'
+            elif self.m_code==4:
+                m='NOT_FOUND'
+            elif self.m_code==5:
+                m='NOT_ALLOWED'
+        elif self.m_class==CLASS_SERVER_ERROR:
+            if self.m_code==0:
+                m='INTERNAL_SERVER_ERROR'
+            elif self.m_code==1:
+                m='NOT_IMPLEMENTED'
+            elif self.m_code==2:
+                m='BAD_GATEWAY'
+            elif self.m_code==3:
+                m='UNAVAILABLE_SERVICE'
+        return m
 
+
+
+    def get_class(self):
+        c=''
+        if self.m_class==0:
+            c='METHOD'
+        elif self.m_class==2:
+            c='SUCCES'
+        elif self.m_class==4:
+            c='CLIENT_ERROR'
+        elif self.m_class==5:
+            c='SERVER_ERROR'
+
+        return c
+
+
+    def get_type(self):
+        t=''
+        if self.m_type==0:
+            t='CON'
+        elif self.m_type==1:
+            t='NON_CON'
+        elif self.m_type==2:
+            t='ACK'
+        elif self.m_type==3:
+            t='RESET'
+
+        return t

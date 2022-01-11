@@ -16,7 +16,7 @@ class Application(tk.Tk):
         super().__init__()
         tk.Tk.wm_title(self,"CoAP CLIENT")
 
-
+        self.configure(bg='black')
         self.message_queue=queue.Queue()
         self.client=None
         self.resizable(False,False)
@@ -43,8 +43,9 @@ class Application(tk.Tk):
         self.show_frame('FSBrowserPage')
         self.resizable(True,True)
         self.init_client(serverPort,serverIP)
-        self.client_thread=threading.Thread(target=lambda: self.run_client())
+        self.client_thread=threading.Thread(target=lambda: self.run_client(),daemon = True)
         self.client_thread.start()
+
 
     def init_client(self,serverPort:int,serverIP:str):
         self.client=CoAPclient(10001,serverPort,serverIP,self,self.message_queue) #initializare client CoAP
@@ -68,7 +69,7 @@ class Application(tk.Tk):
 
     def destroy(self):
         if self.client:
-            self.client.running=False
+            self.client.end_connection()
         super().destroy()
 
 

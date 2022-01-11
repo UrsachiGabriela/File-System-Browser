@@ -68,7 +68,7 @@ class ConnectionPage(BasePage):
     def init_gui(self,master):
         lbl = ImageLabel(master)
         lbl.pack(side=tk.BOTTOM)
-        lbl.load('D:/__FACULTATE/AN_3/Sem1/__PROIECT_RC/RC_P/Client_CoAP/src/GUI/7Tix.gif')
+        lbl.load('D:/__FACULTATE/AN_3/Sem1/__PROIECT_RC/RC_P/Client_CoAP/src/GUI/utilities/7Tix.gif')
 
         #ip
 
@@ -108,6 +108,9 @@ class ConnectionPage(BasePage):
             self.controller.show_message('Invalid IP')
             return
 
+        """
+        https://www.geeksforgeeks.org/python-program-to-validate-an-ip-address/
+        """
         ip_regex = "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
         if not re.search(ip_regex, ip)  :
             self.controller.show_message('Invalid IP')

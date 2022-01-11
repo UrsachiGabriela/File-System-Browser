@@ -272,38 +272,7 @@ class moveCommand(Command):
         if self.call_fct:
             self.call_fct()
 
-# aceasta comanda va fi executata prin intermediul comenzii open
-# class backCommand(Command):
-#     def __init__(self, currentPath: str, call_fct: Callable=None):
-#         super().__init__(call_fct)
-#         self.currentPath=currentPath
-#         self.mType=TYPE_NON_CON_MSG
-#
-#     @staticmethod
-#     def get_class():
-#         return CLASS_METHOD
-#
-#     @staticmethod
-#     def get_code():
-#         return CODE_POST
-#
-#     @staticmethod
-#     def response_needed():
-#         return True
-#
-#
-#     def payload(self):
-#         p={
-#             "cmd":"back",
-#             "path":self.currentPath
-#         }
-#
-#         return json.dumps(p)
-#
-#     def parse_response(self, data_from_server):
-#         if self.call_fct:
-#             self.call_fct()
-#
+
 
 class searchCommand(Command):
     def __init__(self, searchedPathName: str, targetName: str, call_fct: Callable=None):

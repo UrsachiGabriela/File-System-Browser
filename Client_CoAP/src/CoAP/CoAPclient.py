@@ -15,8 +15,6 @@ from src.CoAP.commands import *
 
 
 
-
-
 class CoAPclient():
     def __init__(self,myPort:int,serverPort:int,serverIp:str,controller,message_queue:queue.Queue=None):
         self.myPort=myPort
@@ -31,8 +29,12 @@ class CoAPclient():
 
         self.running=False
 
+
+        """
+        https://www.loggly.com/ultimate-guide/python-logging-basics/
+        """
         self.logger=logging.Logger(name='CoAP_client')
-        handler=logging.FileHandler('client.log')
+        handler=logging.FileHandler('client.log',mode='w')
         handler.setLevel(logging.DEBUG)
         handler.setFormatter(logging.Formatter('%(name)s - %(asctime)s - %(levelname)s - %(message)s'))
         self.logger.addHandler(handler)
@@ -47,28 +49,22 @@ class CoAPclient():
     def run(self):
         try:
 
-            self.logger.info('Connection started.')
+            self.logger.info(f'Started connection with ( {self.serverIp} , {self.serverPort} )')
             while(self.running):
                 # se asteapta pana cand se da o comanda din interfata, pentru a o trimite la server
                 cmd=self.controller.message_queue.get(block=True,timeout=None)
                 request=self.create_request(cmd)
 
 
-                #print("Se trimite cererea la server: \n",request,"\n\n\n")
-                self.logger.info('Request is sent to server : \n'+ str(request))
+                self.logger.info(f'request   {request.get_type()} - {request.get_class()} - {request.get_code()}  :'+ request.payload)
                 if(request.m_type==TYPE_NON_CON_MSG and cmd.response_needed()==False):
-
                     self.send(request) # se trimite cererea, fara a astepta raspuns sau ack de la server
-                    # TO DO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    # refresh la continutul sistemului de fisiere pt a vizualiza vreo modificare
 
                 else : # mesaj confirmabil sau comanda care asteapta date de la server
                     response=self.match_response(request)
                     if response:
-                        self.logger.info('Server response : \n' + str(response))
+                        self.logger.info(f'response  {response.get_type()} - {response.get_class()} - {response.get_code()}  : ' + response.payload)
                         self.analyze_response(cmd,response)
-
-
 
 
         except ConnectionResetError as err:
@@ -78,6 +74,7 @@ class CoAPclient():
 
 
     def analyze_response(self,cmd:Command,response:Message):
+
         if response.m_type==TYPE_RST:
             self.message_queue.put(cmd)
             return
@@ -87,15 +84,11 @@ class CoAPclient():
             if "status" in data_from_server:
                 self.controller.show_message(data_from_server["status"])
             cmd.parse_response(data_from_server)
-        elif response.m_class==CLASS_CLIENT_ERROR :
-            if response.m_code==C_ERROR_FORBIDDEN:
-                self.controller.show_message('Missing file permissions for target object')
-            elif response.m_code==C_ERROR_NOT_FOUND:
-                self.controller.show_message('Invalid path')
-            else:
-                self.controller.show_message('The path requested is invalid, or access has been denied by the server')
-        elif response.m_class==CLASS_SERVER_ERROR :
-            self.controller.show_message('Server error')
+        elif response.m_class==CLASS_CLIENT_ERROR or response.m_class==CLASS_SERVER_ERROR:
+            self.controller.show_message(response.payload)
+        else:
+            self.controller.show_message('Invalid response from server.')
+
 
 
 
@@ -115,6 +108,7 @@ class CoAPclient():
 
 
         token_len=self.generate_token_len()
+
         #se genereaza un token aleatoriu de dimensiune token_len bytes
         token=self.generate_token(token_len)
 
@@ -137,8 +131,11 @@ class CoAPclient():
 
 
     def match_response(self, request:Message)->Message:
-        # se trimite cererea : in cazul in care nu se primeste raspuns in intervalul de timp dat (mySocket.settimeout),
-        # se retrimite cererea, dar doar daca nu s-a atins un nr maxim (MAX_RETRANSMIT) de transmisii
+        """
+           Se trimite cererea : in cazul in care nu se primeste raspuns in intervalul de timp dat (mySocket.settimeout),
+        se retrimite cererea, dar doar daca nu s-a atins un nr maxim (MAX_RETRANSMIT) de transmisii
+        """
+
         transmitted=0
         while transmitted<MAX_RETRANSMIT :
             self.send(request)
@@ -166,7 +163,6 @@ class CoAPclient():
 
                         # daca e RESET il returnez, urmand ca interpretarea raspunsului sa fie facuta in fct separata
                         if response.m_type==TYPE_RST:
-                            self.logger.info('RESET message received')
                             return response
                         elif response.m_type!=TYPE_ACK:
                             self.logger.info('error: ACK expected ')
@@ -176,6 +172,7 @@ class CoAPclient():
 
 
                         # verific daca am piggybacked response sau nu
+
                         # raspuns separat (ack de tip empty)
                         if(response.m_class==CLASS_METHOD and response.m_code==CODE_EMPTY and response.token_len==0 and  response.token is None ):
                             response=self.receive()
@@ -189,20 +186,21 @@ class CoAPclient():
 
                             return response
                         else:
+                            #piggybacked
+                            self.logger.info('Piggybacked response')
                             return response
 
 
                 # request non-confirmabil
-                elif (request.m_type==TYPE_NON_CON_MSG):  # as putea sa nu retransmit cererea non-confirmabila !!!!
+                elif (request.m_type==TYPE_NON_CON_MSG):
                     # daca cererea trimisa este non-confirmabila, se asteapta doar raspunsul (fara ack) cu acelasi token
                     while(response.token != request.token):
                         response=self.receive()
 
                     return response
 
-            except socket.timeout as e:
-                #print(e)
-                self.logger.exception(e)
+            except socket.timeout:
+                self.logger.info('SOCKET TIMEOUT')
 
 
 
@@ -230,11 +228,8 @@ class CoAPclient():
     def end_connection(self):
         self.running=False
         self.mySocket.close()
-        #print('Connection stopped. :( ')
-        self.logger.info('Connection stopped. :( ')
+        self.logger.info('Connection stopped.  ')
 
-
-        # 64ko
 
     def random_timeout(self):
         return random.uniform(ACK_TIMEOUT,ACK_TIMEOUT * ACK_RANDOM_FACTOR)

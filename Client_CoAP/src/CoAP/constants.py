@@ -1,10 +1,4 @@
 
-# For a new Confirmable message, the initial timeout is set
-#  to a random duration (often not an integral number of seconds)
-#  between ACK_TIMEOUT and (ACK_TIMEOUT * ACK_RANDOM_FACTOR)
-#  and the retransmission counter is set to 0
-
-
 
 DEFAULT_VERSION = 1
 ACK_TIMEOUT = 2

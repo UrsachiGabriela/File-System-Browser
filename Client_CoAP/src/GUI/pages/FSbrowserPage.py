@@ -20,7 +20,6 @@ class FSBrowserPage(BasePage):
         self.viewer_frame.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
         self.viewer_frame.grid_columnconfigure(0, weight=1)
         self.viewer_frame.grid_columnconfigure(1, weight=1)
-
         self.init_gui(self.viewer_frame)
 
         self.current_path=''
@@ -216,9 +215,7 @@ class FSBrowserPage(BasePage):
         self.current_items=[]
         for item in content:
             self.current_items.append(item)
-        #print("OPENDED PATH   :   " +self.opened_path)
         self.current_path=self.opened_path
-        #print(self.current_path + '        ----->folder')
         self.display_current_items()
 
     def delete_item_response(self,deleted_path):
@@ -372,7 +369,7 @@ class FSBrowserPage(BasePage):
         else:
             self.moved_path=f'{self.current_path}/{self.moved_item_name_entry.get().strip()}'
 
-        self.new_path=self.new_path_name_entry.get().strip()
+        self.new_path=self.new_path_name_entry.get().strip() + self.moved_path
 
 
         cmd=moveCommand(self.moved_path,self.new_path,call_fct=lambda : self.move_item_response())
