@@ -40,15 +40,12 @@ class CoAPclient():
         self.logger.addHandler(handler)
 
 
-
-
         self.message_queue=message_queue
 
 
 
     def run(self):
         try:
-
             self.logger.info(f'Started connection with ( {self.serverIp} , {self.serverPort} )')
             while(self.running):
                 # se asteapta pana cand se da o comanda din interfata, pentru a o trimite la server
@@ -67,8 +64,9 @@ class CoAPclient():
                         self.analyze_response(cmd,response)
 
 
-        except ConnectionResetError as err:
-            self.logger.exception(err)
+        except ConnectionResetError :
+            self.logger.error('Connection Reset Error')
+            self.controller.destroy()
 
 
 
@@ -121,6 +119,7 @@ class CoAPclient():
     # se trimite pachet catre server ( sub forma de octeti )
     def send(self,msg:Message):
         self.mySocket.sendto(msg.to_bytes(), (self.serverIp, int(self.serverPort)))
+
 
 
     # se primeste pachet de la server ( sub forma de octeti )
@@ -205,6 +204,7 @@ class CoAPclient():
 
 
 
+
     def generate_token_len(self):
         return random.randint(1,8)
 
@@ -228,7 +228,7 @@ class CoAPclient():
     def end_connection(self):
         self.running=False
         self.mySocket.close()
-        self.logger.info('Connection stopped.  ')
+        self.logger.info('Connection stopped.')
 
 
     def random_timeout(self):
