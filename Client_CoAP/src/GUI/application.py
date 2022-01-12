@@ -68,9 +68,12 @@ class Application(tk.Tk):
         )
 
     def destroy(self):
+
         if self.client:
+            self.client.running=False
             self.client.end_connection()
         super().destroy()
+
 
 
 

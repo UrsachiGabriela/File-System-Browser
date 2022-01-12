@@ -1,6 +1,8 @@
 import re
 import tkinter as tk
 from tkinter import ttk
+
+import socket
 from PIL import Image, ImageTk
 from itertools import count, cycle
 
@@ -110,12 +112,17 @@ class ConnectionPage(BasePage):
 
         """
         https://www.geeksforgeeks.org/python-program-to-validate-an-ip-address/
+        https://www.regextester.com/99895
         """
-        ip_regex = "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
-        if not re.search(ip_regex, ip)  :
+        ip_url_regex = "^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
+        if not re.search(ip_url_regex, ip)  :
             self.controller.show_message('Invalid IP')
             return
 
+        ip_regex="^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
+        if not re.search(ip_regex,ip):
+            ip=socket.gethostbyname(ip)
+        print(ip)
         self.controller.connect_to_server(port,ip)
 
 

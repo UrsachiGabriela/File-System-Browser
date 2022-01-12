@@ -1,2 +1,7 @@
-CoAP_client - 2022-01-12 14:18:01,230 - INFO - Started connection with ( eee , 5683 )
-CoAP_client - 2022-01-12 14:18:02,575 - INFO - request   NON_CON - METHOD - GET  :{"cmd": "open", "path": "/"}
+CoAP_client - 2022-01-12 16:24:11,398 - INFO - Started connection with ( 3.22.30.40 , 5683 )
+CoAP_client - 2022-01-12 16:24:13,328 - INFO - request   NON_CON - METHOD - GET  :{"cmd": "open", "path": "/"}
+CoAP_client - 2022-01-12 16:24:15,408 - INFO - timed out
+CoAP_client - 2022-01-12 16:24:17,478 - INFO - timed out
+CoAP_client - 2022-01-12 16:24:19,548 - INFO - timed out
+CoAP_client - 2022-01-12 16:24:21,625 - INFO - timed out
+CoAP_client - 2022-01-12 16:24:47,889 - INFO - Connection stopped.

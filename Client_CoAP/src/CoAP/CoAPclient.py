@@ -64,9 +64,11 @@ class CoAPclient():
                         self.analyze_response(cmd,response)
 
 
-        except ConnectionResetError :
-            self.logger.error('Connection Reset Error')
-            self.controller.destroy()
+        except (ConnectionResetError,WindowsError) as err :
+            self.logger.error(err)
+            self.mySocket.close()
+
+
 
 
 
@@ -198,8 +200,11 @@ class CoAPclient():
 
                     return response
 
-            except socket.timeout:
-                self.logger.info('SOCKET TIMEOUT')
+            except (socket.timeout,ConnectionResetError,WindowsError) as err:
+                self.logger.info(err)
+
+
+
 
 
 
@@ -226,9 +231,9 @@ class CoAPclient():
 
 
     def end_connection(self):
-        self.running=False
-        self.mySocket.close()
         self.logger.info('Connection stopped.')
+
+
 
 
     def random_timeout(self):
