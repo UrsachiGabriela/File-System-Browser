@@ -11,6 +11,13 @@ from src.GUI.pages.ConnectionPage import ConnectionPage
 
 
 class Application(tk.Tk):
+    """
+        Clasa de tip controller, ce realizeaza legatura dintre partea de interfata
+        si schimbul de mesaje cu serverul.
+
+        Contine un container pentru stocarea elementelor de pe interfata si un client
+        pentru care creeaza un thread separat.
+    """
 
     def __init__(self):
         super().__init__()
@@ -35,10 +42,20 @@ class Application(tk.Tk):
 
 
     def show_frame(self , name):
+        """
+            Functie ce realizeaza switch-ul dintre cele 2 pagini de interfata.
+            :param name:  numele paginii ce se va afisa
+        """
         frame=self.frames[name]
         frame.tkraise()
 
     def connect_to_server(self,serverPort:int,serverIP:str):
+        """
+            Functie ce stabileste o conexiune cu serverul in functie de parametrii dati din interfata.
+
+            :param serverPort: numarul de port al server-ului
+            :param serverIP:  IP server
+        """
 
         self.show_frame('FSBrowserPage')
         self.resizable(True,True)
@@ -48,6 +65,9 @@ class Application(tk.Tk):
 
 
     def init_client(self,serverPort:int,serverIP:str):
+        """
+            Functie ce initializeaza un client de tip CoAPclient() .
+        """
         self.client=CoAPclient(10001,serverPort,serverIP,self,self.message_queue) #initializare client CoAP
         self.client.running=True
 
@@ -68,7 +88,9 @@ class Application(tk.Tk):
         )
 
     def destroy(self):
-
+        """
+            Actiuni ce au loc la inchiderea ferestrei aplicatiei.
+        """
         if self.client:
             self.client.running=False
             self.client.end_connection()

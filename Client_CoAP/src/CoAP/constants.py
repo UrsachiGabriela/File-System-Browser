@@ -1,4 +1,6 @@
-
+"""
+Constante utilizate in implementarea unui client CoAP
+"""
 
 DEFAULT_VERSION = 1
 ACK_TIMEOUT = 2

@@ -12,10 +12,14 @@ from src.GUI.pages.BasePage import BasePage
 
 class ImageLabel(tk.Label):
     """
-    A Label that displays images, and plays them if they are gifs
-    :im: A PIL Image instance or a string filename
+        Clasa utilizata pentru afisarea unei imagini tip .gif
     """
+
     def load(self, im):
+        """
+        :param im: o instanta de PIL Image sau un nume de fisier
+        """
+
         if isinstance(im, str):
             try:
                 img= Image.open(im)
@@ -73,12 +77,11 @@ class ConnectionPage(BasePage):
         lbl.load('D:/__FACULTATE/AN_3/Sem1/__PROIECT_RC/RC_P/Client_CoAP/src/GUI/utilities/7Tix.gif')
 
         #ip
-
         self.ipEntry = tk.Entry(master)
         self.ipEntry.place(x=50,y=30)
         self.ipEntry.pack()
-        #port
 
+        #port
         self.portEntry = tk.Entry(master)
         self.portEntry.place(x=200, y=30)
         self.portEntry.pack()
@@ -98,6 +101,11 @@ class ConnectionPage(BasePage):
 
 
     def on_connect(self):
+        """
+            La initierea conexiunii, pentru validarea campurilor ip si port sunt utilizate expresii regulate.
+                https://www.geeksforgeeks.org/python-program-to-validate-an-ip-address/
+                https://www.regextester.com/99895
+        """
         ip=self.ipEntry.get().strip()
         port=self.portEntry.get().strip()
 
@@ -110,10 +118,7 @@ class ConnectionPage(BasePage):
             self.controller.show_message('Invalid IP')
             return
 
-        """
-        https://www.geeksforgeeks.org/python-program-to-validate-an-ip-address/
-        https://www.regextester.com/99895
-        """
+
         ip_url_regex = "^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?|^((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$"
         if not re.search(ip_url_regex, ip)  :
             self.controller.show_message('Invalid IP')

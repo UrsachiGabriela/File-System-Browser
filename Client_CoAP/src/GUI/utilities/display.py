@@ -3,6 +3,13 @@ from tkinter import ttk, font as tkfont
 
 
 class DisplayFrame(tk.Frame):
+    """
+        Clasa utilizata pentru afisarea pe interfata a frame-ului ce va contine lista
+        de fisiere/directoare din current_path.
+
+        Prin intermediul functiilor definite se realizeaza anumite operatii pe lista de elemente
+        ( sortare , selectare )
+    """
     def __init__(self, master, tree_columns, row_color=True, cnf={}, **kw):
         tk.Frame.__init__(self, master, cnf=cnf, **kw)
 
@@ -45,6 +52,12 @@ class DisplayFrame(tk.Frame):
 
 
     def sort_by(self, tree: ttk.Treeview, col, descending):
+        """
+            Functie utilizata pentru sortarea listei.
+            :param tree: lista de elemente
+            :param col:  coloana 'tabelului'
+            :param descending: tipul de sortare
+        """
 
         data = [(tree.set(child, col), child) for child in tree.get_children('')]
         data.sort(reverse=descending)
@@ -70,6 +83,10 @@ class DisplayFrame(tk.Frame):
         tree.heading(col, command=lambda col=col: self.sort_by(tree, col, int(not descending)))
 
     def insert(self, *args, **kwargs):
+        """
+            Functie utilizata pentru inserarea unui nou item in lista afisata.
+        """
+
         if self.odd:
             tag = 'oddrow'
         else:

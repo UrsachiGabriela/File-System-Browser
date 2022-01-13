@@ -6,6 +6,10 @@ from src.CoAP.constants import *
 json_encoder=json.JSONEncoder()
 
 class Message:
+    """
+        Implementeaza formatul de mesaj.
+    """
+
     def __init__(self,m_type:int,token_len:int,m_class:int,m_code:int,m_id:int,payload:str,version=DEFAULT_VERSION,token=0x0):
         self.version=version
         self.m_type=m_type
@@ -16,11 +20,16 @@ class Message:
         self.token=token #de tip bytes
         self.payload=payload
 
+
     @classmethod
-    def decode(cls,data:bytes) -> 'Message': #extractFromBytes
+    def decode(cls,data:bytes) -> 'Message':
         """
-        https://en.wikipedia.org/wiki/Constrained_Application_Protocol
+        :param data:  mesaj sub forma de octeti
+        :return: mesaj decodat
+
+        Decodarea este realizata conform modelului gasit la https://en.wikipedia.org/wiki/Constrained_Application_Protocol
         """
+
         version=(0xC0 & data[0])>>6
         m_type=(0x30 & data[0])>>4
         token_len=(0x0F & data[0])>>0
@@ -28,12 +37,13 @@ class Message:
         m_code=((data[1]>>0)&0x1F)
         m_id=(data[2]<<8)|(data[3])
 
-        #len 9-15 -> reserved
+
+        # "Lengths 9-15 are reserved, MUST NOT be sent, and MUST be processed as a message format error."
         if(token_len>=9 and token_len<=15):
-            print("error")
+            print("Message format error")
 
         if(version != 1):
-            print("error")
+            print("Message ignored")
 
         #un octet este pastrat pt payload marker = 0xFF
         payload=data[5+token_len:].decode('utf-8')
@@ -46,6 +56,10 @@ class Message:
 
 
     def to_bytes(self): #toBytes
+        """
+        :return: mesajul codificat sub forma de octeti
+        """
+
         data=[]
 
         data.append((0x03 & self.version)<<6)
@@ -64,6 +78,7 @@ class Message:
 
 
         if(len(self.payload)>0):
+
             #PAYLOAD MARKER
             data.append(0xff)
             payload=self.payload.encode('utf-8')
@@ -91,6 +106,9 @@ class Message:
 
 
     def get_code(self):
+        """
+            Functie utilizata pentru afisare in fisierul log.
+        """
         m=''
         if self.m_class==CLASS_METHOD:
             if self.m_code==0:
@@ -139,6 +157,9 @@ class Message:
 
 
     def get_class(self):
+        """
+            Functie utilizata pentru afisare in fisierul log.
+        """
         c=''
         if self.m_class==0:
             c='METHOD'
@@ -153,6 +174,9 @@ class Message:
 
 
     def get_type(self):
+        """
+            Functie utilizata pentru afisare in fisierul log.
+        """
         t=''
         if self.m_type==0:
             t='CON'

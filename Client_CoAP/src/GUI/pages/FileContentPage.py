@@ -1,11 +1,13 @@
 import tkinter as tk
 
-# Toplevel object which will
-# be treated as a new window
 from src.CoAP.commands import saveCommand
 
 
 class FileContentPage(tk.Toplevel):
+    """
+        Clasa ce implementeaza fereastra deschisa pe interfata in momentul in care se
+        trimite comanda open pentru un fisier.
+    """
 
     def __init__(self,master,file_content):
         super().__init__()

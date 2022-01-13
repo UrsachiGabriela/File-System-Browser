@@ -26,9 +26,8 @@ class FSBrowserPage(BasePage):
         self.current_items=[]
 
     def init_gui(self,master):
-        # Browser frame
 
-
+        # Browser frame1
         self.buttons_frame1 = tk.Frame(master)
         self.buttons_frame1.pack(padx=10, pady=0, fill='x', expand=True, side= tk.LEFT)
 
@@ -89,6 +88,7 @@ class FSBrowserPage(BasePage):
 
         self.buttons_frame2 = tk.Frame(master)
         self.buttons_frame2.pack(padx=10, pady=0, fill='x', expand=True, side= tk.RIGHT)
+
         # rename button
         name_label = ttk.Label(self.buttons_frame2, text="Old Name:")
         name_label.pack(fill='x', expand=True, pady=1,side= tk.TOP)
@@ -107,8 +107,8 @@ class FSBrowserPage(BasePage):
         self.rename_button = ttk.Button(self.buttons_frame2, text="Rename", command=self.rename_clicked)
         self.rename_button.pack(fill='x', expand=True, pady=1,side= tk.TOP)
 
-        # move button
 
+        # move button
         name_label = ttk.Label(self.buttons_frame2, text="File/Directory Name:")
         name_label.pack(fill='x', expand=True, pady=1,side= tk.TOP)
 
@@ -172,7 +172,7 @@ class FSBrowserPage(BasePage):
 
 
 
-        column_name=['Item Name','Path']
+        column_name=['Item Name','Current Path']
         self.display_frame = DisplayFrame(master,column_name)
         self.display_frame.pack(padx=10, pady=0, fill='both', expand=True, side= tk.RIGHT)
 
@@ -189,6 +189,7 @@ class FSBrowserPage(BasePage):
         else:
             return TYPE_NON_CON_MSG
 
+    # functii de callback la primirea raspunsurilor aferente comenzilor transmise #########################
     def on_create_dir_response(self,name):
         self.current_items.append(name)
         self.display_current_items()
@@ -263,6 +264,7 @@ class FSBrowserPage(BasePage):
             msg_to_show+= f'Name : {item["name"]}\t Type : {item["type"]}\t Path : {item["path"]} \n'
         self.controller.show_message(msg_to_show)
 
+    ####################################################################################################
 
     def display_current_items(self):
         self.display_frame.clear_display()
@@ -283,7 +285,6 @@ class FSBrowserPage(BasePage):
 
 
     def cd_clicked(self):
-        #self.current_path=self.go_to_item_name_entry.get().strip()
         go_to_path=self.go_to_item_name_entry.get().strip()
         if  go_to_path[0] == '/':
             self.opened_path=go_to_path
@@ -298,8 +299,6 @@ class FSBrowserPage(BasePage):
 
 
     def create_dir_clicked(self):
-        """ callback when the create_dir button is clicked
-        """
         if self.current_path.endswith('/'):
             new_dir_path=f'{self.current_path}{self.new_dir_name_entry.get().strip()}'
         else:
@@ -312,8 +311,6 @@ class FSBrowserPage(BasePage):
 
 
     def create_file_clicked(self):
-        """ callback when the create_file button is clicked
-        """
         if self.current_path.endswith('/'):
             new_file_path=f'{self.current_path}{self.new_file_name_entry.get().strip()}'
         else:
@@ -369,6 +366,7 @@ class FSBrowserPage(BasePage):
         else:
             self.moved_path=f'{self.current_path}/{self.moved_item_name_entry.get().strip()}'
 
+        #calea absoluta
         self.new_path=self.new_path_name_entry.get().strip() + self.moved_path
 
 
@@ -393,9 +391,12 @@ class FSBrowserPage(BasePage):
 
 
 
-
-
     def send_cmd(self,cmd):
+        """
+            Se trimite catre aplicatia controller comanda generata.
+
+            :param cmd: comanda generata din interfata
+        """
         self.controller.add_cmd(cmd)
 
 

@@ -4,6 +4,13 @@ import abc
 from tkinter.messagebox import showinfo
 
 class BasePage(tk.Frame):
+    """
+        Pentru implementarea interfetei , s-au utilizat 2 pagini cu functionalitati diferite
+        (conexiune , respectiv browser propriu-zis) , care mostenesc o clasa de baza ce pune la
+        dispozitie anumite aspecte comune (aplicatia de legatura intre front-end si back-end ,
+        respectiv titlul paginilor )
+    """
+
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent,bg=parent['bg'])
         self.controller=controller
@@ -27,6 +34,9 @@ class BasePage(tk.Frame):
 
     @abc.abstractmethod
     def init_gui(self,master):
+        """
+            Functie abstracta, implementata in clasele descendent, in functie de elementele afisate.
+        """
         pass
 
 

@@ -6,8 +6,21 @@ from src.CoAP.constants import *
 
 
 class Command(metaclass=abc.ABCMeta):
+    """
+        Clasa abstracta utilizata pentru notiunea de comanda generata de utilizator.
+        In functie de tipul comenzii , va fi creata o clasa specifica.
+        ( din cele care mostenesc aceasta clasa )
+    """
 
     def __init__(self,call_fct:Callable=None):
+        """
+           Pentru fiecare din clasele descendent se va atasa o functie de callback ,
+           necesara sincronizarii raspunsurilor cu interfata aplicatiei.
+
+           In functie de tipul comenzii, vor mai fi initializate atribute specifice.
+
+            :param call_fct: functie de callback
+        """
         self.call_fct=call_fct
 
 
@@ -32,15 +45,22 @@ class Command(metaclass=abc.ABCMeta):
 
     @abc.abstractmethod
     def parse_response(self, data_from_server):
+        """
+            Se apeleaza functia de callback atasata cu parametrii corespunzatori
+            :param data_from_server: raspunsul ce urmeaza sa fie parsat , pentru actualizarea interfetei
+        """
         pass
 
 
-class detailsCommand(Command): #list files properties
+class detailsCommand(Command):
+    """
+       Comanda pentru listarea tipului, dimensiunii , caii absolute pentru un fisier/director.
+    """
 
     def __init__(self, pathName: str, call_fct: Callable=None):
         super().__init__(call_fct)
         self.pathName=pathName
-        self.mType=TYPE_NON_CON_MSG  # cererea este confirmabila doar daca se solicita acest lucru din GUI
+        self.mType=TYPE_NON_CON_MSG
 
 
 
@@ -72,6 +92,9 @@ class detailsCommand(Command): #list files properties
 
 
 class createCommand(Command):
+    """
+        Comanda pentru crearea unui fisier/director.
+    """
 
     def __init__(self, pathName: str, type: str, call_fct: Callable=None):
         super().__init__(call_fct)
@@ -110,7 +133,14 @@ class createCommand(Command):
 
 
 
-class openCommand(Command): #response is the content of file
+class openCommand(Command):
+    """
+       Comanda pentru listarea continutului unui fisier/director.
+
+       In cazul in care se executa aceasta comanda pentru un director, browser-ul isi
+       va stabili 'current_path' drept calea absoluta a acestuia.
+    """
+
     def __init__(self, openedPathName: str, call_fct: Callable=None):
         super().__init__(call_fct)
         self.openedPathName=openedPathName
@@ -144,6 +174,10 @@ class openCommand(Command): #response is the content of file
 
 
 class saveCommand(Command):
+    """
+       Comanda pentru salvarea continutului unui fisier.
+    """
+
     def __init__(self, savedPathName: str, savedContent: str, call_fct: Callable=None):
         super().__init__(call_fct)
         self.savedPathName=savedPathName
@@ -177,6 +211,10 @@ class saveCommand(Command):
 
 
 class deleteCommand(Command):
+    """
+       Comanda pentru stergerea unui fisier/director din sistemul de fisiere.
+    """
+
     def __init__(self, deletedPathName: str, call_fct: Callable=None):
         super().__init__(call_fct)
         self.deletedPathName=deletedPathName
@@ -208,6 +246,10 @@ class deleteCommand(Command):
 
 
 class renameCommand(Command):
+    """
+       Comanda pentru redenumirea unui fisier/director.
+    """
+
     def __init__(self, path: str, name: str, call_fct: Callable=None):
         super().__init__(call_fct)
         self.path=path
@@ -241,6 +283,10 @@ class renameCommand(Command):
 
 
 class moveCommand(Command):
+    """
+        Comanda pentru mutarea unui fisier/director intr-o locatie diferita in cadrul FS.
+    """
+
     def __init__(self, sourcePath: str, destinationPath: str, call_fct: Callable=None):
         super().__init__(call_fct)
         self.sourcePath=sourcePath
@@ -275,9 +321,13 @@ class moveCommand(Command):
 
 
 class searchCommand(Command):
+    """
+       Comanda pentru cautarea dupa nume/nume_partial a unui element din FS.
+    """
+
     def __init__(self, searchedPathName: str, targetName: str, call_fct: Callable=None):
         super().__init__(call_fct)
-        self.searchedPathName=searchedPathName #va fi mereu current_path
+        self.searchedPathName=searchedPathName  #va fi mereu current_path
         self.targetName=targetName
         self.mType=TYPE_NON_CON_MSG
 
